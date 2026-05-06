@@ -2,7 +2,11 @@
 
 import { useEffect, useState } from "react";
 
-export function ContactLauncher() {
+type ContactLauncherProps = {
+  imageUrl: string;
+};
+
+export function ContactLauncher({ imageUrl }: ContactLauncherProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -40,7 +44,7 @@ export function ContactLauncher() {
             <span>
               <img
                 alt=""
-                src="https://images-cdn1.welcomesoftware.com/Zz01NjJjMzQ1MDdjOTExMWVlODQwMmUyNTlkYThlNTFlNA==?width=584&height=390"
+                src={imageUrl}
               />
               TOGETHER
             </span>

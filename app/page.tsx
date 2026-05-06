@@ -4,8 +4,16 @@ import { LisbonClock } from "@/components/LisbonClock";
 import { SectionSnap } from "@/components/SectionSnap";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { StretchWord } from "@/components/StretchWord";
+import { fetchGalleryImages, galleryImageAt, toGalleryUrls } from "@/lib/gallery";
+import { fetchLatestNews } from "@/lib/news";
 
-export default function Home() {
+export default async function Home() {
+  const [latestNews, galleryImages] = await Promise.all([
+    fetchLatestNews().catch(() => []),
+    fetchGalleryImages().catch(() => []),
+  ]);
+  const galleryUrls = toGalleryUrls(galleryImages);
+
   return (
     <main className="site-shell">
       <SectionSnap />
@@ -50,15 +58,15 @@ export default function Home() {
               <span className="obsession-pop__images" aria-hidden="true">
                 <img
                   alt=""
-                  src="https://www.exitlag.com/blog/wp-content/uploads/2024/12/Exploring-the-Best-FiveM-Servers-for-GTA-V_-A-Server-List-Guide.webp"
+                  src={galleryImageAt(galleryUrls, 0)}
                 />
                 <img
                   alt=""
-                  src="https://www.exitlag.com/blog/wp-content/uploads/2024/12/Exploring-the-Best-FiveM-Servers-for-GTA-V_-A-Server-List-Guide.webp"
+                  src={galleryImageAt(galleryUrls, 1)}
                 />
                 <img
                   alt=""
-                  src="https://www.exitlag.com/blog/wp-content/uploads/2024/12/Exploring-the-Best-FiveM-Servers-for-GTA-V_-A-Server-List-Guide.webp"
+                  src={galleryImageAt(galleryUrls, 2)}
                 />
               </span>
             </span>
@@ -67,7 +75,7 @@ export default function Home() {
         </div>
       </section>
 
-      <CategoryScroller />
+      <CategoryScroller galleryImages={galleryUrls} />
 
       <section className="work-section" aria-labelledby="work-title">
         <div className="work-section__title-wrap">
@@ -76,7 +84,7 @@ export default function Home() {
             <span>
               <img
                 alt=""
-                src="https://images-cdn1.welcomesoftware.com/Zz01NjJjMzQ1MDdjOTExMWVlODQwMmUyNTlkYThlNTFlNA==?width=584&height=390"
+                src={galleryImageAt(galleryUrls, 3)}
               />
               TOGETHER
             </span>
@@ -89,24 +97,21 @@ export default function Home() {
             <br />
             Drop it, we&apos;ll build it!
           </p>
-          <ContactLauncher />
+          <ContactLauncher imageUrl={galleryImageAt(galleryUrls, 4)} />
         </div>
 
         <section className="news-strip" aria-labelledby="news-title">
           <p className="news-strip__label" id="news-title">
             NEWS
           </p>
-          {[
-            ["01", "INNER OPENS NEW GAMEPLAY LAB"],
-            ["02", "PROTO BUILDS FOR UNANNOUNCED WORLDS"],
-            ["03", "MOTION SYSTEMS FOR PLAYER FEEL"],
-            ["04", "BRANDING THAT WORKS IN-GAME"],
-            ["05", "PORTUGUESE TALENT, GLOBAL SERVERS"],
-            ["06", "BEHIND THE PIXELS ARCHIVE"],
-          ].map(([number, title]) => (
-            <a href="/news" className="news-card" key={number} aria-label={`Read more about ${title}`}>
+          {latestNews.map((item, index) => (
+            <a href="/news" className="news-card" key={item.id} aria-label={`Read more about ${item.title}`}>
               <div className="news-card__image">
-                <img src={`/news/${number}.png`} alt={title} />
+                <img src={galleryImageAt(galleryUrls, index + 5)} alt={item.title} />
+              </div>
+              <div className="news-card__content">
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h3>{item.title}</h3>
               </div>
             </a>
           ))}

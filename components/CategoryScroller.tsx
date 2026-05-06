@@ -4,36 +4,32 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { CSSProperties, MouseEvent } from "react";
 import { createPortal } from "react-dom";
 import gsap from "gsap";
-
-const placeholderImage =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCHo3CkaH0oRY3MvrEN0xgn-x_Lsn3Lm3lVQ&s";
-const temporaryLogo =
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/330px-Google_2015_logo.svg.png";
-const pixelMouseImages = [
-  placeholderImage,
-  "https://www.exitlag.com/blog/wp-content/uploads/2024/12/Exploring-the-Best-FiveM-Servers-for-GTA-V_-A-Server-List-Guide.webp",
-  "https://images-cdn1.welcomesoftware.com/Zz01NjJjMzQ1MDdjOTExMWVlODQwMmUyNTlkYThlNTFlNA==?width=584&height=390",
-];
+import { DEFAULT_GALLERY_IMAGES, galleryImageAt } from "@/lib/gallery";
 
 const categories = [
-  { title: "ART DIRECTION", subcategory: "VISUAL SYSTEMS", imageUrl: placeholderImage },
-  { title: "GAME EXPERIENCE", subcategory: "PLAYER FEEL", imageUrl: placeholderImage },
-  { title: "BRANDING", subcategory: "IDENTITY", imageUrl: placeholderImage },
-  { title: "WEBFLOW", subcategory: "NO-CODE BUILDS", imageUrl: placeholderImage },
-  { title: "ANIMATIONS", subcategory: "INTERACTION", imageUrl: placeholderImage },
-  { title: "3D & MOTION", subcategory: "CINEMATICS", imageUrl: placeholderImage },
-  { title: "UI/UX DESIGN", subcategory: "INTERFACES", imageUrl: placeholderImage },
-  { title: "ADVERTISING", subcategory: "CAMPAIGNS", imageUrl: placeholderImage },
-  { title: "SEO & CONTENT", subcategory: "RANKING", imageUrl: placeholderImage },
+  { title: "ART DIRECTION", subcategory: "VISUAL SYSTEMS" },
+  { title: "GAME EXPERIENCE", subcategory: "PLAYER FEEL" },
+  { title: "BRANDING", subcategory: "IDENTITY" },
+  { title: "WEBFLOW", subcategory: "NO-CODE BUILDS" },
+  { title: "ANIMATIONS", subcategory: "INTERACTION" },
+  { title: "3D & MOTION", subcategory: "CINEMATICS" },
+  { title: "UI/UX DESIGN", subcategory: "INTERFACES" },
+  { title: "ADVERTISING", subcategory: "CAMPAIGNS" },
+  { title: "SEO & CONTENT", subcategory: "RANKING" },
 ];
 
-export function CategoryScroller() {
+type CategoryScrollerProps = {
+  galleryImages?: string[];
+};
+
+export function CategoryScroller({ galleryImages = DEFAULT_GALLERY_IMAGES }: CategoryScrollerProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPixelsOpen, setIsPixelsOpen] = useState(false);
   const [mouseImageIndex, setMouseImageIndex] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [mousePop, setMousePop] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
+  const pixelMouseImages = [galleryImageAt(galleryImages, 9), galleryImageAt(galleryImages, 10), galleryImageAt(galleryImages, 11)];
   const sectionRef = useRef<HTMLElement | null>(null);
   const listRef = useRef<HTMLDivElement | null>(null);
   const eyebrowRef = useRef<HTMLParagraphElement | null>(null);
@@ -192,7 +188,7 @@ export function CategoryScroller() {
                 data-variant={index + 1}
                 key={category.title}
               >
-                <img src={category.imageUrl} alt="" />
+                <img src={galleryImageAt(galleryImages, index)} alt="" />
               </div>
             ))}
           </div>
@@ -230,11 +226,7 @@ export function CategoryScroller() {
                 data-visible={activeIndex === categories.length - 1}
               >
                 {[1, 2, 3, 4].map((logo) => (
-                  <img
-                    alt={`Temporary brand logo ${logo}`}
-                    key={logo}
-                    src={temporaryLogo}
-                  />
+                  <img alt="" key={logo} src={galleryImageAt(galleryImages, logo + 12)} />
                 ))}
               </div>
             </div>
