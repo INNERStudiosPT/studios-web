@@ -2,6 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { CSSProperties, MouseEvent } from "react";
+import { createPortal } from "react-dom";
 import gsap from "gsap";
 
 const placeholderImage =
@@ -32,6 +33,7 @@ export function CategoryScroller() {
   const [mouseImageIndex, setMouseImageIndex] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [mousePop, setMousePop] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
   const sectionRef = useRef<HTMLElement | null>(null);
   const listRef = useRef<HTMLDivElement | null>(null);
   const eyebrowRef = useRef<HTMLParagraphElement | null>(null);
@@ -40,12 +42,23 @@ export function CategoryScroller() {
   const mouseDistanceRef = useRef(0);
 
   useEffect(() => {
-    if (!isPixelsOpen) return;
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    document.body.dataset.pixelsOpen = isPixelsOpen ? "true" : "false";
+
+    if (!isPixelsOpen) {
+      return () => {
+        delete document.body.dataset.pixelsOpen;
+      };
+    }
 
     document.body.style.overflow = "hidden";
 
     return () => {
       document.body.style.overflow = "";
+      delete document.body.dataset.pixelsOpen;
     };
   }, [isPixelsOpen]);
 
@@ -101,7 +114,7 @@ export function CategoryScroller() {
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: () => `+=${window.innerHeight * 0.36 * (categories.length - 1)}`,
+          end: () => `+=${itemDistance() * (categories.length - 1)}`,
           pin: true,
           scrub: 0.65,
           anticipatePin: 1,
@@ -229,33 +242,37 @@ export function CategoryScroller() {
         </div>
       </div>
 
-      <div
-        className="pixels-page"
-        data-open={isPixelsOpen}
-        aria-hidden={!isPixelsOpen}
-        onMouseMove={handlePixelsMouseMove}
-      >
-        <div className="pixels-page__panel" role="dialog" aria-modal="true" aria-labelledby="pixels-title">
-          <button className="pixels-page__close" type="button" onClick={() => setIsPixelsOpen(false)}>
-            CLOSE
-          </button>
-          <h2 className="pixels-page__title" id="pixels-title">
-            <span>BEHIND</span>
-            <span>THE PIXELS</span>
-          </h2>
-          <img
-            alt=""
-            className="pixels-page__cursor"
-            data-pop={mousePop}
-            key={mousePop}
-            src={pixelMouseImages[mouseImageIndex]}
-            style={{
-              left: mousePosition.x,
-              top: mousePosition.y,
-            }}
-          />
-        </div>
-      </div>
+      {isMounted &&
+        createPortal(
+          <div
+            className="pixels-page"
+            data-open={isPixelsOpen}
+            aria-hidden={!isPixelsOpen}
+            onMouseMove={handlePixelsMouseMove}
+          >
+            <div className="pixels-page__panel" role="dialog" aria-modal="true" aria-labelledby="pixels-title">
+              <button className="pixels-page__close" type="button" onClick={() => setIsPixelsOpen(false)}>
+                CLOSE
+              </button>
+              <h2 className="pixels-page__title" id="pixels-title">
+                <span>BEHIND</span>
+                <span>THE PIXELS</span>
+              </h2>
+              <img
+                alt=""
+                className="pixels-page__cursor"
+                data-pop={mousePop}
+                key={mousePop}
+                src={pixelMouseImages[mouseImageIndex]}
+                style={{
+                  left: mousePosition.x,
+                  top: mousePosition.y,
+                }}
+              />
+            </div>
+          </div>,
+          document.body,
+        )}
     </section>
   );
 }

@@ -1,5 +1,6 @@
 import { CategoryScroller } from "@/components/CategoryScroller";
 import { ContactLauncher } from "@/components/ContactLauncher";
+import { ContactNavLink } from "@/components/ContactNavLink";
 import { LisbonClock } from "@/components/LisbonClock";
 import { SectionSnap } from "@/components/SectionSnap";
 import { StretchWord } from "@/components/StretchWord";
@@ -17,9 +18,9 @@ export default function Home() {
 
         <div className="nav-actions">
           <ThemeToggle />
-          <a className="talk-link" href="mailto:hello@innerstudios.com">
+          <ContactNavLink className="talk-link">
             LET&apos;S TALK
-          </a>
+          </ContactNavLink>
         </div>
       </nav>
 
@@ -115,11 +116,11 @@ export default function Home() {
             ["05", "PORTUGUESE TALENT, GLOBAL SERVERS"],
             ["06", "BEHIND THE PIXELS ARCHIVE"],
           ].map(([number, title]) => (
-            <article className="news-card" key={number}>
-              <span>{number}</span>
-              <h3>{title}</h3>
-              <a href="/news">READ</a>
-            </article>
+            <a href="/news" className="news-card" key={number} aria-label={`Read more about ${title}`}>
+              <div className="news-card__image">
+                <img src={`/news/${number}.png`} alt={title} />
+              </div>
+            </a>
           ))}
         </section>
 
@@ -129,13 +130,12 @@ export default function Home() {
             <a href="#categories">WORK</a>
             <a href="#categories">SERVICES</a>
             <a href="#manifesto">STUDIO</a>
-            <a href="#categories">PLANS</a>
+            <a href="/careers">WORK WITH US</a>
             <a href="#categories">APPROACH</a>
             <a href="#categories">NEWS</a>
             <span aria-hidden="true" />
-            <a href="https://youtube.com">YOUTUBE</a>
-            <a href="https://linkedin.com">LINKEDIN</a>
-            <a href="https://instagram.com">INSTAGRAM</a>
+            <a href="https://www.linkedin.com/company/innerstudios-gaming/">LINKEDIN</a>
+            <a href="https://www.instagram.com/innercircle.roleplay">INSTAGRAM</a>
             <a href="/legal">LEGAL</a>
             <a href="/">SITE EM PORTUGUES</a>
           </nav>

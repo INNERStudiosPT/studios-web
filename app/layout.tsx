@@ -19,7 +19,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt" suppressHydrationWarning>
-      <body className={robotoMono.variable}>{children}</body>
+      <body className={robotoMono.variable}>
+        {children}
+        <a 
+          href="https://circle.innerstudios.pt" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="innercircle-banner"
+          aria-label="Looking for Innercircle?"
+        >
+          LOOKING FOR INNERCIRCLE?
+        </a>
+      </body>
     </html>
   );
 }

@@ -18,17 +18,31 @@ export function StretchWord() {
 
       gsap.registerPlugin(ScrollTrigger);
 
+      const getTargetScale = () => {
+        const word = wordRef.current;
+
+        const section = sectionRef.current;
+        if (!word || !section) return 1.85;
+
+        const bottomBarGap = 48; // Adjusted gap to be closer to actual footer size
+        const availableHeight = section.offsetHeight - bottomBarGap;
+        const wordHeight = word.offsetHeight || 1;
+
+        return Math.max(availableHeight / wordHeight, 1.25);
+      };
+
       const tween = gsap.fromTo(
         wordRef.current,
         { scaleY: 1 },
         {
-          scaleY: 1.85,
+          scaleY: getTargetScale,
           ease: "none",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 82%",
+            start: "top 92%",
             end: "bottom bottom",
             scrub: 0.8,
+            invalidateOnRefresh: true,
           },
         },
       );

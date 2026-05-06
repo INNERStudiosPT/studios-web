@@ -13,6 +13,16 @@ export function ContactLauncher() {
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    const openContact = () => setIsOpen(true);
+
+    window.addEventListener("open-contact", openContact);
+
+    return () => {
+      window.removeEventListener("open-contact", openContact);
+    };
+  }, []);
+
   return (
     <>
       <button className="work-section__cta" type="button" onClick={() => setIsOpen(true)}>
