@@ -6,11 +6,13 @@ import { SiteNavbar } from "@/components/SiteNavbar";
 import { StretchWord } from "@/components/StretchWord";
 import { fetchGalleryImages, galleryImageAt, toGalleryUrls } from "@/lib/gallery";
 import { fetchLatestNews } from "@/lib/news";
+import { fetchPartners } from "@/lib/partners";
 
 export default async function Home() {
-  const [latestNews, galleryImages] = await Promise.all([
+  const [latestNews, galleryImages, partners] = await Promise.all([
     fetchLatestNews().catch(() => []),
     fetchGalleryImages().catch(() => []),
+    fetchPartners().catch(() => []),
   ]);
   const galleryUrls = toGalleryUrls(galleryImages);
 
@@ -75,7 +77,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <CategoryScroller galleryImages={galleryUrls} />
+      <CategoryScroller galleryImages={galleryUrls} partners={partners} />
 
       <section className="work-section" aria-labelledby="work-title">
         <div className="work-section__title-wrap">

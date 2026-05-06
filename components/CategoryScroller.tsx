@@ -5,6 +5,7 @@ import type { CSSProperties, MouseEvent } from "react";
 import { createPortal } from "react-dom";
 import gsap from "gsap";
 import { DEFAULT_GALLERY_IMAGES, galleryImageAt } from "@/lib/gallery";
+import type { Partner } from "@/lib/partners";
 
 const categories = [
   { title: "ART DIRECTION", subcategory: "VISUAL SYSTEMS" },
@@ -20,9 +21,10 @@ const categories = [
 
 type CategoryScrollerProps = {
   galleryImages?: string[];
+  partners?: Partner[];
 };
 
-export function CategoryScroller({ galleryImages = DEFAULT_GALLERY_IMAGES }: CategoryScrollerProps) {
+export function CategoryScroller({ galleryImages = DEFAULT_GALLERY_IMAGES, partners = [] }: CategoryScrollerProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPixelsOpen, setIsPixelsOpen] = useState(false);
   const [mouseImageIndex, setMouseImageIndex] = useState(0);
@@ -225,9 +227,25 @@ export function CategoryScroller({ galleryImages = DEFAULT_GALLERY_IMAGES }: Cat
                 aria-label="Selected partner brands"
                 data-visible={activeIndex === categories.length - 1}
               >
-                {[1, 2, 3, 4].map((logo) => (
-                  <img alt="" key={logo} src={galleryImageAt(galleryImages, logo + 12)} />
-                ))}
+                {partners.map((partner) => {
+                  const logo = (
+                    <img
+                      alt={partner.name}
+                      src={partner.logo}
+                      style={{
+                        filter: partner.invert ? "grayscale(1) invert(1)" : "grayscale(1) contrast(1.1)",
+                      }}
+                    />
+                  );
+
+                  return partner.website ? (
+                    <a href={partner.website} key={partner.id} rel="noreferrer" target="_blank">
+                      {logo}
+                    </a>
+                  ) : (
+                    <span key={partner.id}>{logo}</span>
+                  );
+                })}
               </div>
             </div>
           </div>
