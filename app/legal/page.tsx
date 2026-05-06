@@ -1,21 +1,9 @@
-import { ContactNavLink } from "@/components/ContactNavLink";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { SiteNavbar } from "@/components/SiteNavbar";
 
 export default function LegalPage() {
   return (
     <main className="site-shell" style={{ padding: "8rem 2rem", minHeight: "100vh" }}>
-      <nav className="navbar" aria-label="Main navigation">
-        <a className="brand" href="/" aria-label="INNER Studios home">
-          INNER STUDIOS
-        </a>
-
-        <div className="nav-actions">
-          <ThemeToggle />
-          <ContactNavLink className="talk-link">
-            LET&apos;S TALK
-          </ContactNavLink>
-        </div>
-      </nav>
+      <SiteNavbar />
 
       <div style={{ maxWidth: "800px", margin: "0 auto", marginTop: "4rem" }}>
         <h1 style={{ fontSize: "3rem", marginBottom: "2rem", textTransform: "uppercase", fontWeight: 900 }}>Legal & Privacy Policy</h1>

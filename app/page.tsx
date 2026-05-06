@@ -1,28 +1,16 @@
 import { CategoryScroller } from "@/components/CategoryScroller";
 import { ContactLauncher } from "@/components/ContactLauncher";
-import { ContactNavLink } from "@/components/ContactNavLink";
 import { LisbonClock } from "@/components/LisbonClock";
 import { SectionSnap } from "@/components/SectionSnap";
+import { SiteNavbar } from "@/components/SiteNavbar";
 import { StretchWord } from "@/components/StretchWord";
-import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function Home() {
   return (
     <main className="site-shell">
       <SectionSnap />
 
-      <nav className="navbar" aria-label="Main navigation">
-        <a className="brand" href="#hero" aria-label="INNER Studios home">
-          INNER STUDIOS
-        </a>
-
-        <div className="nav-actions">
-          <ThemeToggle />
-          <ContactNavLink className="talk-link">
-            LET&apos;S TALK
-          </ContactNavLink>
-        </div>
-      </nav>
+      <SiteNavbar brandHref="#hero" />
 
       <div className="bottom-bar" aria-label="Studio information">
         <p>COPYRIGHT 2026 INNER STUDIOS</p>
