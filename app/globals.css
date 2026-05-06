@@ -1356,8 +1356,8 @@ body[data-pixels-open="true"] .bottom-bar {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  background: var(--text-primary);
-  color: var(--background);
+  background: hsl(168 65% 45%);
+  color: hsl(220 20% 6%);
   padding: 1.5rem 0.6rem;
   font-family: var(--font-roboto-mono), monospace;
   font-size: 0.8rem;
@@ -1366,13 +1366,14 @@ body[data-pixels-open="true"] .bottom-bar {
   text-decoration: none;
   writing-mode: vertical-rl;
   z-index: 100;
-  transition: padding-right 0.2s ease, background 0.2s ease;
+  transition: padding-right 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
   border-radius: 4px 0 0 4px;
-  box-shadow: -4px 0 16px rgba(0,0,0,0.2);
+  box-shadow: -4px 0 18px hsla(168, 65%, 45%, 0.32);
 }
 
 .innercircle-banner:hover {
   padding-right: 0.9rem;
-  background: #001eff;
+  background: hsl(200 70% 40%);
   color: #fff;
+  box-shadow: -4px 0 24px hsla(200, 70%, 40%, 0.42);
 }
