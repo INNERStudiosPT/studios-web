@@ -10,10 +10,7 @@ export type NewsItem = {
 };
 
 export async function fetchLatestNews(limit = 6): Promise<NewsItem[]> {
-  const url = new URL("/api/supabase/rest/v1/news", API_BASE);
-  url.searchParams.set("select", "id,title,excerpt,image_url,published_at,is_published");
-  url.searchParams.set("is_published", "eq.true");
-  url.searchParams.set("order", "published_at.desc");
+  const url = new URL("/api/v1/content/news", API_BASE);
   url.searchParams.set("limit", String(limit));
 
   const response = await fetch(url, { cache: "no-store" });

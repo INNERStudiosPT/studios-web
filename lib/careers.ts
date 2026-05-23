@@ -46,10 +46,7 @@ export function formatRoleSlug(slug: string | string[] | undefined) {
 }
 
 export async function fetchCareerJobs(): Promise<CareerJob[]> {
-  const url = new URL("/api/supabase/rest/v1/jobs", CAREERS_API_BASE);
-  url.searchParams.set("select", "id,title,description,requirements,location,type,salary_range,is_active,form_id,created_at");
-  url.searchParams.set("is_active", "eq.true");
-  url.searchParams.set("order", "created_at.desc");
+  const url = new URL("/api/v1/content/jobs", CAREERS_API_BASE);
 
   const response = await fetch(url, { cache: "no-store" });
 

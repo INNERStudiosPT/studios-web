@@ -22,13 +22,7 @@ export const DEFAULT_GALLERY_IMAGES = [
 ];
 
 export async function fetchGalleryImages(limit = 18): Promise<GalleryImage[]> {
-  const url = new URL("/api/supabase/rest/v1/gallery_photos", API_BASE);
-  url.searchParams.set("select", "id,title,photo_url,description,created_at,is_public,is_draft,is_archived,page_post_status");
-  url.searchParams.set("is_public", "eq.true");
-  url.searchParams.set("is_draft", "eq.false");
-  url.searchParams.set("is_archived", "eq.false");
-  url.searchParams.set("page_post_status", "eq.published");
-  url.searchParams.set("order", "created_at.desc");
+  const url = new URL("/api/v1/content/gallery", API_BASE);
   url.searchParams.set("limit", String(limit));
 
   const response = await fetch(url, { cache: "no-store" });

@@ -64,11 +64,10 @@ export async function POST(request: Request) {
       },
     };
 
-    const response = await fetch(`${CAREERS_API_BASE}/api/supabase/rest/v1/custom_form_submissions`, {
+    const response = await fetch(`${CAREERS_API_BASE}/api/v1/content/careers/apply`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Prefer: "return=representation",
       },
       body: JSON.stringify(submissionBody),
     });
@@ -76,7 +75,7 @@ export async function POST(request: Request) {
     const data = await response.json().catch(() => null);
 
     if (!response.ok) {
-      const error = data?.error || data?.message || "Failed to submit application";
+      const error = data?.detail || data?.error || data?.message || "Failed to submit application";
       return NextResponse.json({ success: false, error }, { status: response.status });
     }
 
