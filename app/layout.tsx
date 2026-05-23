@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt" suppressHydrationWarning>
-      <body className={robotoMono.variable}>
+      <body className={robotoMono.variable} suppressHydrationWarning>
         {children}
         <a 
           href="https://circle.innerstudios.pt" 
