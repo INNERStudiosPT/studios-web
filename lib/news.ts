@@ -10,7 +10,7 @@ export type NewsItem = {
 };
 
 export async function fetchLatestNews(limit = 6): Promise<NewsItem[]> {
-  const url = new URL("/api/v1/content/news", API_BASE);
+  const url = new URL("/v1/content/news", API_BASE);
   url.searchParams.set("limit", String(limit));
 
   const response = await fetch(url, { cache: "no-store" });

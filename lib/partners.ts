@@ -13,7 +13,7 @@ export type Partner = {
 };
 
 export async function fetchPartners(): Promise<Partner[]> {
-  const response = await fetch(`${API_BASE}/api/v1/sponsors`, { cache: "no-store" });
+  const response = await fetch(`${API_BASE}/v1/social/v1/sponsors`, { cache: "no-store" });
 
   if (!response.ok) {
     throw new Error(`Failed to fetch partners: ${response.status}`);

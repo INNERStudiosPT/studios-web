@@ -46,7 +46,7 @@ export function formatRoleSlug(slug: string | string[] | undefined) {
 }
 
 export async function fetchCareerJobs(): Promise<CareerJob[]> {
-  const url = new URL("/api/v1/content/jobs", CAREERS_API_BASE);
+  const url = new URL("/v1/content/jobs", CAREERS_API_BASE);
 
   const response = await fetch(url, { cache: "no-store" });
 

@@ -22,7 +22,7 @@ export const DEFAULT_GALLERY_IMAGES = [
 ];
 
 export async function fetchGalleryImages(limit = 18): Promise<GalleryImage[]> {
-  const url = new URL("/api/v1/content/gallery", API_BASE);
+  const url = new URL("/v1/content/gallery", API_BASE);
   url.searchParams.set("limit", String(limit));
 
   const response = await fetch(url, { cache: "no-store" });

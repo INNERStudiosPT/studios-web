@@ -64,7 +64,7 @@ export async function POST(request: Request) {
       },
     };
 
-    const response = await fetch(`${CAREERS_API_BASE}/api/v1/content/careers/apply`, {
+    const response = await fetch(`${CAREERS_API_BASE}/v1/content/careers/apply`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
