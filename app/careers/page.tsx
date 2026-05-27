@@ -1,5 +1,7 @@
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { fetchCareerJobs, slugify } from "@/lib/careers";
+import "./globals.css";
+
 
 export default async function CareersPage() {
   const jobs = await fetchCareerJobs().catch(() => []);

@@ -1,4 +1,5 @@
 import { SiteNavbar } from "@/components/SiteNavbar";
+import "../careers/globals.css";
 
 export default function LegalPage() {
   return (
