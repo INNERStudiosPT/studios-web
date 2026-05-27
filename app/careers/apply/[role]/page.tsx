@@ -2,7 +2,7 @@
 
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { CareerJob, findJobBySlug, formatRoleSlug } from "@/lib/careers";
-import "../../careers/globals.css";
+import "../../globals.css";
 import { useParams } from "next/navigation";
 import { ChangeEvent, FormEvent, Suspense, useEffect, useState } from "react";
 
