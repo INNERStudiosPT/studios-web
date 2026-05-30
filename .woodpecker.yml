@@ -1,0 +1,25 @@
+labels:
+  backend: local
+
+steps:
+  - name: lint
+    image: node:20-alpine
+    commands:
+      - npm ci
+      - npm run lint
+
+  - name: build
+    image: node:20-alpine
+    commands:
+      - npm ci
+      - npm run build
+
+  - name: deploy
+    image: bash
+    when:
+      - event: push
+        branch: main
+    commands:
+      - cd /home/fivem/apps/studios-web
+      - chmod +x ./deploy.sh
+      - ./deploy.sh
