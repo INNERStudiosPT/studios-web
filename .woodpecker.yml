@@ -8,6 +8,11 @@ steps:
       - npm ci
       - npm run lint
 
+  - name: react-doctor
+    image: node:20-alpine
+    commands:
+      - npx react-doctor@latest .
+
   - name: build
     image: node:20-alpine
     commands:
