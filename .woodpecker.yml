@@ -3,32 +3,32 @@ labels:
 
 steps:
   - name: install
-    image: node:20-alpine
+    image: bash
     commands:
       - npm ci
 
   - name: lint
-    image: node:20-alpine
+    image: bash
     commands:
       - npm run lint
 
   - name: typecheck
-    image: node:20-alpine
+    image: bash
     commands:
       - npx tsc --noEmit
 
   - name: react-doctor
-    image: node:20-alpine
+    image: bash
     commands:
       - npm run react-doctor
 
   - name: test-unit
-    image: node:20-alpine
+    image: bash
     commands:
       - npm run test
 
   - name: test-e2e
-    image: mcr.microsoft.com/playwright:v1.45.0-jammy
+    image: bash
     commands:
       - npm ci
       - npx playwright install-deps
