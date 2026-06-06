@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Aeonik Pro';
+  src: url('/fonts/aeonik_pro_black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aeonik Pro';
+  src: url('/fonts/aeonik_pro_bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #030d24;
+  --detail-dark: #030d24;
+
+  --blue-500: #0472f8;
+  --blue-300: #87bafb;
+  --blue-100: #cae1fb;
+
+  --purple-500: #9f64fe;
+  --purple-300: #cfb3fe;
+  --purple-100: #eadeff;
+
+  --cyan-500: #009eb4;
+  --cyan-300: #6dd6e4;
+  --cyan-100: #c0ecf2;
+
+  --green-500: #008564;
+  --green-300: #61b49f;
+  --green-100: #b0dbd1;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-detail-dark: var(--detail-dark);
+
+  --color-blue-500: var(--blue-500);
+  --color-blue-300: var(--blue-300);
+  --color-blue-100: var(--blue-100);
+
+  --color-purple-500: var(--purple-500);
+  --color-purple-300: var(--purple-300);
+  --color-purple-100: var(--purple-100);
+
+  --color-cyan-500: var(--cyan-500);
+  --color-cyan-300: var(--cyan-300);
+  --color-cyan-100: var(--cyan-100);
+
+  --color-green-500: var(--green-500);
+  --color-green-300: var(--green-300);
+  --color-green-100: var(--green-100);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Aeonik Pro", var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+.bg-noise {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 0);
+  background-size: 24px 24px;
+}
