@@ -2,29 +2,30 @@ labels:
   backend: local
 
 steps:
-  - name: install
-    image: bash
-    commands:
-      - npm ci
-
   - name: lint
     image: bash
     commands:
+      - pwd
+      - ls -la
+      - npm ci
       - npm run lint
 
   - name: typecheck
     image: bash
     commands:
+      - npm ci
       - npx tsc --noEmit
 
   - name: react-doctor
     image: bash
     commands:
+      - npm ci
       - npm run react-doctor
 
   - name: test-unit
     image: bash
     commands:
+      - npm ci
       - npm run test
 
   - name: test-e2e
