@@ -19,6 +19,7 @@ const TRANSLATIONS: Record<Lang, {
   noSpam: string;
   privacy: string;
   terms: string;
+  careers: string;
 }> = {
   "pt-PT": {
     heading: "algo novo está",
