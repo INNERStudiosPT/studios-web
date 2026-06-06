@@ -1,14 +1,14 @@
 import { test, expect } from '@playwright/test';
 
-test('has title and brand text', async ({ page }) => {
+test('has coming soon text and logo', async ({ page }) => {
   await page.goto('/');
 
+  // Wait for redirect to /coming-soon
+  await expect(page).toHaveURL(/\/coming-soon/);
+
   // Verify brand logo is visible
-  await expect(page.getByAltText('inner studios').first()).toBeVisible();
+  await expect(page.getByAltText('Inner Studios').first()).toBeVisible();
 
-  // Verify CTA button is visible
-  await expect(page.locator('button:has-text("Open an Account")').first()).toBeVisible();
-
-  // Verify heading text is visible
-  await expect(page.locator('text=Global payments built for')).toBeVisible();
+  // Verify coming soon heading text is visible
+  await expect(page.locator('text=something new is').first()).toBeVisible();
 });

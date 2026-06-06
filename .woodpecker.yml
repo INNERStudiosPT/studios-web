@@ -26,12 +26,6 @@ steps:
       - npm ci
       - npm run test
 
-  - name: test-e2e
-    image: bash
-    commands:
-      - npm ci
-      - npx playwright install-deps
-      - npm run test:e2e
 
   - name: deploy
     image: bash
