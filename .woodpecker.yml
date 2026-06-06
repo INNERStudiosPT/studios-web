@@ -1,32 +1,45 @@
+labels:
+  backend: local
+
 steps:
-  install:
-    image: node:20
+  - name: install
+    image: node:20-alpine
     commands:
       - npm ci
 
-  lint:
-    image: node:20
+  - name: lint
+    image: node:20-alpine
     commands:
       - npm run lint
 
-  typecheck:
-    image: node:20
+  - name: typecheck
+    image: node:20-alpine
     commands:
       - npx tsc --noEmit
 
-  react-doctor:
-    image: node:20
+  - name: react-doctor
+    image: node:20-alpine
     commands:
       - npm run react-doctor
 
-  test-unit:
-    image: node:20
+  - name: test-unit
+    image: node:20-alpine
     commands:
       - npm run test
 
-  test-e2e:
+  - name: test-e2e
     image: mcr.microsoft.com/playwright:v1.45.0-jammy
     commands:
       - npm ci
       - npx playwright install-deps
       - npm run test:e2e
+
+  - name: deploy
+    image: bash
+    when:
+      - event: push
+        branch: main
+    commands:
+      - cd /home/fivem/apps/studios-web
+      - chmod +x ./deploy.sh
+      - ./deploy.sh
