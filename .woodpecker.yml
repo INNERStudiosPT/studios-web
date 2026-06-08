@@ -1,38 +1,44 @@
-labels:
-  backend: local
-
 steps:
   - name: lint
-    image: bash
+    image: node:20
+    when:
+      - event: [push, pull_request]
     commands:
       - npm ci
       - npm run lint
 
   - name: typecheck
-    image: bash
+    image: node:20
+    when:
+      - event: [push, pull_request]
     commands:
       - npm ci
       - npx tsc --noEmit
 
   - name: react-doctor
-    image: bash
+    image: node:20
+    when:
+      - event: [push, pull_request]
     commands:
       - npm ci
       - npm run react-doctor
 
   - name: test-unit
-    image: bash
+    image: node:20
+    when:
+      - event: [push, pull_request]
     commands:
       - npm ci
       - npm run test
 
-
   - name: deploy
-    image: bash
+    image: alpine
     when:
       - event: push
         branch: main
+    volumes:
+      - /home/fivem/.ssh/woodpecker_deploy:/woodpecker_ssh_key:ro
     commands:
-      - cd /home/fivem/apps/studios-web
-      - chmod +x ./deploy.sh
-      - ./deploy.sh
+      - apk add --no-cache openssh-client
+      - cp /woodpecker_ssh_key /tmp/ssh_key && chmod 600 /tmp/ssh_key
+      - ssh -i /tmp/ssh_key -o StrictHostKeyChecking=no fivem@172.18.0.1 "bash /home/fivem/apps/studios-web/deploy.sh"
