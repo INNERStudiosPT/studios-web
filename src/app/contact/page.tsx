@@ -9,10 +9,11 @@ import posthog from "posthog-js";
 import Navbar from "../../components/Navbar";
 import Turnstile from "../../components/Turnstile";
 import Checkbox from "../../components/Checkbox";
+import { CONTENT_API_ENABLED, CONTENT_API_BASE } from "@/config/api";
 
 export default function ContactPage() {
   // Navbar handles mobile state
-  const [requestType, setRequestType] = useState("Partnership");
+  const [requestType, setRequestType] = useState("Orçamento");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -31,7 +32,7 @@ export default function ContactPage() {
       return;
     }
     if (!turnstileToken) {
-      setErrorMessage("Please complete the security check.");
+      setErrorMessage("Por favor, conclua a verificação de segurança.");
       return;
     }
 
@@ -48,26 +49,31 @@ export default function ContactPage() {
 
       const verifyData = await verifyRes.json();
       if (!verifyData.success) {
-        setErrorMessage(verifyData.error || "Security verification failed.");
+        setErrorMessage(verifyData.error || "A verificação de segurança falhou.");
         setVerifying(false);
         return;
       }
 
       // 2. Submit data to Ingestion API
-      const contactRes = await fetch("https://api.innerstudios.pt/v1/content/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          phone: null,
-          interests: [requestType],
-          message,
-        }),
-      });
+      // API de conteúdos temporariamente desativada — não enviar para o exterior.
+      if (CONTENT_API_ENABLED) {
+        const contactRes = await fetch(`${CONTENT_API_BASE}/contact`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name,
+            email,
+            phone: null,
+            interests: [requestType],
+            message,
+          }),
+        });
 
-      if (!contactRes.ok) {
-        throw new Error("Failed to submit message to the contact API.");
+        if (!contactRes.ok) {
+          throw new Error("Failed to submit message to the contact API.");
+        }
+      } else {
+        console.warn("Content API disabled — contact message not sent:", { name, email, requestType });
       }
 
       if (subscribeNewsletter) {
@@ -86,7 +92,7 @@ export default function ContactPage() {
       posthog.identify(email, {
         email: email,
         name: name,
-        company: "INNER Studios Partner Candidate",
+        company: "stratacoms Lead",
         newsletter_subscriber: subscribeNewsletter
       });
 
@@ -99,7 +105,7 @@ export default function ContactPage() {
       setSubmitted(true);
     } catch (err: any) {
       console.error(err);
-      setErrorMessage(err.message || "An unexpected error occurred. Please try again.");
+      setErrorMessage(err.message || "Ocorreu um erro inesperado. Por favor, tente novamente.");
     } finally {
       setVerifying(false);
     }
@@ -113,8 +119,8 @@ export default function ContactPage() {
         
         {/* Title */}
         <h1 className="font-heading font-extrabold text-[44px] md:text-[56px] text-slate-900 leading-[1.05] tracking-tight mb-8">
-          Let's discuss <br />
-          your topic
+          Vamos falar <br />
+          sobre a sua marca
         </h1>
 
         {/* Contact Form Card */}
@@ -125,18 +131,18 @@ export default function ContactPage() {
           <div className="relative z-10">
             {submitted ? (
               <div className="text-center py-10 text-white">
-                <h3 className="text-2xl font-bold mb-4">Request sent!</h3>
-                <p className="text-emerald-100 font-medium">Thank you, {name}. We will get back to you shortly.</p>
+                <h3 className="text-2xl font-bold mb-4">Mensagem enviada!</h3>
+                <p className="text-emerald-100 font-medium">Obrigado, {name}. Entraremos em contacto brevemente.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
                 {/* Request Type Selector */}
                 <div className="mb-8">
                   <label className="block text-emerald-100 text-[14px] font-medium mb-3 pl-2">
-                    Select your type of request
+                    Selecione o tipo de pedido
                   </label>
                   <div className="bg-white p-1.5 rounded-full flex items-center justify-between shadow-sm">
-                    {["Support", "Complain", "Partnership"].map((type) => (
+                    {["Orçamento", "Parceria", "Apoio"].map((type) => (
                       <button
                         type="button"
                         key={type}
@@ -156,13 +162,13 @@ export default function ContactPage() {
                 {/* Form Fields */}
                 <div>
                   <label className="block text-emerald-100 text-[14px] font-medium mb-3 pl-2">
-                    Fill the form
+                    Preencha o formulário
                   </label>
                   
                   <div className="flex flex-col gap-3">
                     <input 
                       type="text" 
-                      placeholder="Your name" 
+                      placeholder="O seu nome"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
@@ -171,7 +177,7 @@ export default function ContactPage() {
                     
                     <input 
                       type="email" 
-                      placeholder="Business email" 
+                      placeholder="Email profissional"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
@@ -179,7 +185,7 @@ export default function ContactPage() {
                     />
                     
                     <textarea 
-                      placeholder="Message" 
+                      placeholder="Mensagem"
                       rows={4}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
@@ -214,7 +220,7 @@ export default function ContactPage() {
                       <Link href="/cookie-policy" target="_blank" className="underline hover:text-white transition-colors">
                         Política de Cookies
                       </Link>{" "}
-                      da INNER Studios.
+                      da stratacoms.
                     </span>
                   }
                 />
@@ -228,7 +234,7 @@ export default function ContactPage() {
                     variant="green"
                     label={
                       <span className="text-emerald-100 select-none">
-                        Quero subscrever a newsletter para receber atualizações e novidades da INNER Studios.
+                        Quero subscrever a newsletter para receber atualizações e novidades da stratacoms.
                       </span>
                     }
                   />
@@ -241,7 +247,7 @@ export default function ContactPage() {
                     disabled={verifying || !turnstileToken || !agreePrivacy}
                     className="w-full h-14 bg-white disabled:opacity-50 disabled:cursor-not-allowed rounded-full text-slate-900 text-[15px] font-bold hover:bg-slate-50 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 active:translate-y-0 active:scale-95"
                   >
-                    {verifying ? "Verifying..." : "Send request"}
+                    {verifying ? "A verificar..." : "Enviar mensagem"}
                   </button>
                 </div>
               </form>

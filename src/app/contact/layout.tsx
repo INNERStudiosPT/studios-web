@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
-  description: 'Get in touch with Inner Studios. We are always looking for new partnerships, projects, and top-tier talent to join our ecosystem.',
+  title: 'Contacte-nos',
+  description: 'Fale com a stratacoms. Ajudamos a sua marca a comunicar melhor com gestão de redes sociais, criação de conteúdo, community management e estratégia.',
   alternates: {
     canonical: '/contact',
   },

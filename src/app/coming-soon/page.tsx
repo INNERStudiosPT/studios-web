@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import { posthog } from "../../components/PostHogProvider";
+import Logo from "../../components/Logo";
 
 // ── Translations ──────────────────────────────────────────────────────────────
 type Lang = "pt-PT" | "pt-BR" | "en";
@@ -201,7 +201,7 @@ export default function ComingSoon() {
         >
           <div className="absolute inset-0 bg-noise opacity-5 mix-blend-overlay pointer-events-none" />
           <div className={introFading ? "intro-logo-anim" : ""}>
-            <Image src="/images/logo/logo-white.png" alt="Inner Studios" width={160} height={36} className="h-9 w-auto" priority />
+            <Logo className="text-4xl text-white" />
           </div>
         </div>
       )}
@@ -210,7 +210,7 @@ export default function ComingSoon() {
 
         {/* Header */}
         <header className="relative z-50 px-6 md:px-10 pt-8 flex items-center justify-between">
-          <Image src="/images/logo/logo-dark.png" alt="Inner Studios" width={110} height={24} className="h-6 w-auto" />
+          <Logo className="text-2xl text-slate-900" />
 
           <div className="flex items-center gap-3">
             {/* Careers button */}
@@ -358,7 +358,7 @@ export default function ComingSoon() {
         {/* Footer */}
         <footer className="relative z-10 px-6 md:px-10 pb-6 flex items-center justify-between">
           <p className="text-slate-400 text-xs" suppressHydrationWarning>
-            © {new Date().getFullYear()} Inner Studios
+            © {new Date().getFullYear()} stratacoms
           </p>
           <div className="flex gap-5 text-xs text-slate-400">
             <a href="/privacy" className="hover:text-slate-700 transition-colors">{t.privacy}</a>

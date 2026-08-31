@@ -1,5 +1,6 @@
-import { redirect } from "next/navigation";
+import React from "react";
+import LandingHero from "../components/LandingHero";
 
 export default function Home() {
-  redirect("/coming-soon");
+  return <LandingHero />;
 }

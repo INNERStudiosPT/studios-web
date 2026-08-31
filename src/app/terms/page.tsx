@@ -4,7 +4,7 @@ import Navbar from "../../components/Navbar";
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
-  description: 'Read the terms and conditions that govern your use of Inner Studios services and website.',
+  description: 'Read the terms and conditions that govern your use of stratacoms services and website.',
   alternates: {
     canonical: '/terms',
   },
@@ -73,14 +73,14 @@ export default function TermsOfServicePage() {
           <section id="introduction" className="scroll-mt-32">
             <h2>1. Introduction</h2>
             <p>
-              These Terms of Service ("Terms") govern your access to and use of the Inner Studios website, products, and services ("Services"). Please read these Terms carefully, and contact us if you have any questions. By accessing or using our Services, you agree to be bound by these Terms and by our Privacy Policy.
+              These Terms of Service ("Terms") govern your access to and use of the stratacoms website, products, and services ("Services"). Please read these Terms carefully, and contact us if you have any questions. By accessing or using our Services, you agree to be bound by these Terms and by our Privacy Policy.
             </p>
           </section>
 
           <section id="use-of-services" className="scroll-mt-32">
             <h2>2. Use of Our Services</h2>
             <p>
-              You may use our Services only if you can form a binding contract with Inner Studios, and only in compliance with these Terms and all applicable laws. When you create your Inner Studios account, you must provide us with accurate and complete information.
+              You may use our Services only if you can form a binding contract with stratacoms, and only in compliance with these Terms and all applicable laws. When you create your stratacoms account, you must provide us with accurate and complete information.
             </p>
           </section>
 
@@ -101,7 +101,7 @@ export default function TermsOfServicePage() {
           <section id="intellectual-property" className="scroll-mt-32">
             <h2>5. Intellectual Property Rights</h2>
             <p>
-              The Service and its original content, features and functionality are and will remain the exclusive property of Inner Studios and its licensors. The Service is protected by copyright, trademark, and other laws of both the United Kingdom and foreign countries.
+              The Service and its original content, features and functionality are and will remain the exclusive property of stratacoms and its licensors. The Service is protected by copyright, trademark, and other laws of both the United Kingdom and foreign countries.
             </p>
           </section>
 
@@ -115,17 +115,17 @@ export default function TermsOfServicePage() {
           <section id="liability" className="scroll-mt-32">
             <h2>7. Limitation of Liability</h2>
             <p>
-              In no event shall Inner Studios, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service.
+              In no event shall stratacoms, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service.
             </p>
           </section>
 
           <section id="contact" className="scroll-mt-32">
             <h2>8. Contact Us</h2>
             <p>
-              If you have any questions about these Terms, please contact us at <strong>legal@innerstudios.com</strong> or by post to:
+              If you have any questions about these Terms, please contact us at <strong>legal@stratacoms.com</strong> or by post to:
             </p>
             <address className="not-italic text-slate-500 mt-4 bg-slate-50 p-6 rounded-2xl border border-slate-100">
-              <strong>Inner Studios, Inc.</strong><br/>
+              <strong>stratacoms, Inc.</strong><br/>
               123 Innovation Drive<br/>
               Tech District, London<br/>
               United Kingdom

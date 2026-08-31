@@ -8,6 +8,7 @@ import Navbar from "../../../../../components/Navbar";
 import Turnstile from "../../../../../components/Turnstile";
 import Checkbox from "../../../../../components/Checkbox";
 import posthog from "posthog-js";
+import { CONTENT_API_ENABLED, CONTENT_API_BASE } from "@/config/api";
 
 interface Job {
   id: string;
@@ -19,24 +20,24 @@ interface Job {
 
 const STATIC_FALLBACK_POSITIONS: Job[] = [
   {
-    id: "senior-frontend-engineer",
-    title: "Senior Frontend Engineer",
-    department: "Engineering",
-    location: "Lisbon, Portugal (Hybrid)",
+    id: "social-media-manager",
+    title: "Social Media Manager",
+    department: "Redes Sociais",
+    location: "Lisboa, Portugal (Híbrido)",
     type: "Full-time",
   },
   {
-    id: "product-designer",
-    title: "Product Designer",
-    department: "Design",
-    location: "Remote",
+    id: "content-creator",
+    title: "Content Creator (Vídeo & Foto)",
+    department: "Conteúdo",
+    location: "Remoto",
     type: "Full-time",
   },
   {
-    id: "backend-go-developer",
-    title: "Backend Go Developer",
-    department: "Engineering",
-    location: "Lisbon, Portugal",
+    id: "community-manager",
+    title: "Community Manager",
+    department: "Comunidade",
+    location: "Lisboa, Portugal",
     type: "Full-time",
   },
 ];
@@ -63,8 +64,19 @@ export default function ApplyPage() {
 
   useEffect(() => {
     const fetchJobDetails = async () => {
+      // API de conteúdos temporariamente desativada — usar dados estáticos.
+      if (!CONTENT_API_ENABLED) {
+        const fallbackFound = STATIC_FALLBACK_POSITIONS.find((j) => j.id === id);
+        if (fallbackFound) {
+          setJob(fallbackFound);
+        } else {
+          setError("Vaga não encontrada.");
+        }
+        setLoading(false);
+        return;
+      }
       try {
-        const res = await fetch("https://api.innerstudios.pt/v1/content/jobs");
+        const res = await fetch(`${CONTENT_API_BASE}/jobs`);
         if (!res.ok) throw new Error("Failed to load jobs");
         const data = await res.json();
         
@@ -179,14 +191,19 @@ export default function ApplyPage() {
         },
       };
 
-      const submitRes = await fetch("https://api.innerstudios.pt/v1/content/careers/apply", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(applicationPayload),
-      });
+      // API de conteúdos temporariamente desativada — não enviar para o exterior.
+      if (CONTENT_API_ENABLED) {
+        const submitRes = await fetch(`${CONTENT_API_BASE}/careers/apply`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(applicationPayload),
+        });
 
-      if (!submitRes.ok) {
-        throw new Error("Failed to submit application to the API.");
+        if (!submitRes.ok) {
+          throw new Error("Failed to submit application to the API.");
+        }
+      } else {
+        console.warn("Content API disabled — application not sent:", applicationPayload.screening_answers);
       }
 
       if (subscribeNewsletter) {
@@ -427,7 +444,7 @@ export default function ApplyPage() {
                       <Link href="/cookie-policy" target="_blank" className="underline hover:text-white transition-colors">
                         Política de Cookies
                       </Link>{" "}
-                      da INNER Studios.
+                      da stratacoms.
                     </>
                   }
                 />
@@ -441,7 +458,7 @@ export default function ApplyPage() {
                     variant="blue"
                     label={
                       <>
-                        Quero subscrever a newsletter para receber atualizações e novidades da INNER Studios.
+                        Quero subscrever a newsletter para receber atualizações e novidades da stratacoms.
                       </>
                     }
                   />

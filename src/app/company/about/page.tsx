@@ -11,16 +11,16 @@ const TIMELINE_DATA = [
     id: 1,
     year: "2016",
     date: "JAN, 2016",
-    title: "Foundation",
-    desc: "We started to solve complex cross-border challenges for businesses, gathering all methods in one interface.",
+    title: "Fundação",
+    desc: "Nasce a stratacoms, com a missão de ajudar marcas a comunicar de forma mais próxima, criativa e consistente.",
     type: "text"
   },
   {
     id: 2,
     year: "2018",
-    date: "FEB, 2018",
-    title: "Global Expansion",
-    desc: "We integrated over 150 local payment methods, opening markets in Asia and Latin America for our merchants.",
+    date: "FEV, 2018",
+    title: "Primeiras grandes marcas",
+    desc: "Começámos a gerir as redes sociais e o conteúdo de marcas nacionais em vários setores de atividade.",
     type: "text"
   },
   {
@@ -31,33 +31,33 @@ const TIMELINE_DATA = [
   {
     id: 4,
     year: "2018",
-    date: "DEC, 2018",
-    title: "New Ecosystem",
-    desc: "Launch of direct card acquiring solutions, streamlining finance for thousands of clients.",
+    date: "DEZ, 2018",
+    title: "Estúdio de Conteúdo",
+    desc: "Montámos um estúdio próprio de vídeo e fotografia para produzir conteúdo de raiz, pensado para as redes.",
     type: "text"
   },
   {
     id: 5,
     year: "2021",
     date: "MAR, 2021",
-    title: "Series A Funding",
-    desc: "Secured $50M to build the next generation of financial infrastructure for gamers.",
+    title: "Equipa a crescer",
+    desc: "A equipa expande-se em criação de conteúdo, community management e estratégia de marca.",
     type: "text"
   },
   {
     id: 6,
     year: "2021",
     date: "NOV, 2021",
-    title: "Esports Partnership",
-    desc: "Became the official payment provider for major European esports tournaments.",
+    title: "Foco na Comunidade",
+    desc: "Reforçámos a área de community management, com moderação e engagement diários para os nossos clientes.",
     type: "text"
   },
   {
     id: 7,
     year: "2023",
     date: "JAN, 2023",
-    title: "Banking License",
-    desc: "Obtained full banking license to offer direct accounts to our merchants.",
+    title: "Agência full-service",
+    desc: "Consolidámos a stratacoms como agência de comunicação completa: estratégia, conteúdo, redes e comunidade.",
     type: "text"
   }
 ];
@@ -107,11 +107,11 @@ export default function AboutPage() {
           <div className="px-10 lg:px-20 pt-20 pb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div className="max-w-2xl">
               <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-slate-100 text-slate-500 font-bold text-[11px] tracking-widest uppercase mb-6">
-                Our Journey
+                O nosso percurso
               </div>
               <h1 className="font-heading font-extrabold text-[40px] md:text-[56px] lg:text-[64px] leading-[1.1] tracking-tight">
-                Founded in 2016 <br />
-                as a Tech solution
+                Fundada em 2016 <br />
+                para marcas comunicarem melhor
               </h1>
             </div>
 

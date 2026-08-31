@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/_next/', '/static/'],
     },
-    sitemap: 'https://innerstudios.pt/sitemap.xml',
+    sitemap: 'https://stratacoms.pt/sitemap.xml',
   };
 }

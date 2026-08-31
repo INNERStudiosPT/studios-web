@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowRight, ChevronDown, Menu, X, User, Gamepad2, Trophy, Sparkles, Layers, ChevronLeft, ChevronRight, Gem, ShoppingCart, Club, MonitorSmartphone, Share2, Box } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, X, User, Gamepad2, Trophy, Sparkles, Layers, ChevronLeft, ChevronRight, Gem, ShoppingCart, Club, MonitorSmartphone, Share2, Box, Users, Compass, Film } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import Logo from "./Logo";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import posthog from "posthog-js";
@@ -17,29 +18,29 @@ const THEMES = [
     id: 0, 
     gradient: "radial-gradient(circle at 50% 50%, #06b6d4, #0e7490)", // Cyan
     glowColor: "rgba(6, 182, 212, 0.5)",
-    word1: "software",
-    word2: "Gaming"
+    word1: "content",
+    word2: "Community"
   },
-  { 
-    id: 1, 
+  {
+    id: 1,
     gradient: "radial-gradient(circle at 50% 50%, #6366f1, #3730a3)", // Indigo
     glowColor: "rgba(99, 102, 241, 0.5)",
-    word1: "software",
-    word2: "Esports"
+    word1: "content",
+    word2: "Brands"
   },
-  { 
-    id: 2, 
+  {
+    id: 2,
     gradient: "radial-gradient(circle at 50% 50%, #f43f5e, #9f1239)", // Rose
     glowColor: "rgba(244, 63, 94, 0.5)",
-    word1: "software",
-    word2: "Creators"
+    word1: "content",
+    word2: "Social"
   },
-  { 
-    id: 3, 
+  {
+    id: 3,
     gradient: "radial-gradient(circle at 50% 50%, #10b981, #065f46)", // Emerald
     glowColor: "rgba(16, 185, 129, 0.5)",
-    word1: "assets",
-    word2: "Gaming"
+    word1: "stories",
+    word2: "Creators"
   }
 ];
 
@@ -318,14 +319,14 @@ function HeroSection({
               marginBottom: "clamp(2.5rem, 6vh, 5.5rem)"
             }}
           >
-            {personalization.description || "A INNER Studios é um estúdio de desenvolvimento de videojogos português com uma estrutura verdadeiramente full stack — desde a criação de arte e código, até à gestão de comunidade, lore e suporte técnico."}
+            {personalization.description || "A stratacoms é uma agência de comunicação portuguesa que cuida da sua presença digital de ponta a ponta — da estratégia e criação de conteúdo à gestão de redes sociais e ao community management."}
           </p>
         </div>
 
         {/* CTA Group - Center corresponds to the bottom edge of the hero card */}
         <div className="absolute bottom-0 translate-y-1/2 z-20 bg-white/90 backdrop-blur-md p-2 rounded-[24px] flex gap-2 shadow-[0px_20px_40px_rgba(0,0,0,0.15)] max-w-md w-full sm:w-auto">
           <button type="button" className="flex-1 sm:flex-initial bg-[#0f172a] text-white py-4 px-8 rounded-[16px] text-base font-semibold hover:bg-slate-800 transition-colors whitespace-nowrap shadow-md">
-            {personalization.cta_primary || "Conhecer Projetos"}
+            {personalization.cta_primary || "Ver Serviços"}
           </button>
           <button type="button" className="flex-1 sm:flex-initial bg-transparent text-[#0f172a] py-4 px-8 rounded-[16px] text-base font-semibold hover:bg-slate-100 transition-colors whitespace-nowrap">
             {personalization.cta_secondary || "Falar Connosco"}
@@ -342,16 +343,10 @@ function Footer() {
     <footer className="mt-auto py-8 px-6 border-t border-slate-100 bg-white z-10">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <Image
-            src="/logo-dark.png"
-            alt="inner studios"
-            width={90}
-            height={20}
-            className="h-5 w-auto opacity-40"
-          />
+          <Logo className="text-lg text-slate-900 opacity-40" />
         </div>
         <p className="text-xs text-slate-500" suppressHydrationWarning>
-          &copy; {new Date().getFullYear()} Inner Studios. All rights reserved.
+          &copy; {new Date().getFullYear()} stratacoms. All rights reserved.
         </p>
         <div className="flex gap-6 text-xs text-slate-500">
           <Link href="/privacy" className="hover:text-slate-900 transition-colors">Privacy Policy</Link>
@@ -803,56 +798,56 @@ function FeatureSection({
   setActiveThemeIndex: (idx: number) => void;
   progress: number;
 }) {
-  const tabs = ["Video Games", "Web Platforms", "Social Media", "2D/3D Assets"];
-  const icons = [Gamepad2, MonitorSmartphone, Share2, Box];
+  const tabs = ["Community", "Estratégia", "Redes Sociais", "Conteúdo"];
+  const icons = [Users, Compass, Share2, Film];
 
   const TAB_CONTENT = [
     {
-      title: "Video Games",
-      description: "Build immersive worlds with our expert engineering team. We deliver high-performance gameplay, robust multiplayer networking, and stunning visual fidelity for next-gen titles.",
-      linkText: "Explore our Game Dev",
-      linkUrl: "/projects",
+      title: "Community Management",
+      description: "Transformamos a sua audiência numa comunidade ativa e leal. Moderação próxima, dinamização diária e um suporte que faz as pessoas voltar.",
+      linkText: "Ver Community Management",
+      linkUrl: "/solutions/video-games",
       themeBg: "radial-gradient(circle at top right, #0891b2 0%, #155e75 100%)",
       themePillText: "text-cyan-700",
       themePillBg: "bg-cyan-100/90",
-      cardCategory: "GAMEPLAY",
-      cardHeading: "Top MMO publisher integrates our backend architecture, handling 1M+ concurrent players seamlessly",
+      cardCategory: "COMUNIDADE",
+      cardHeading: "Marcas com comunidades ativas retêm mais clientes e transformam seguidores em embaixadores.",
       cardImage: "/images/feature_preview.png"
     },
     {
-      title: "Web Platforms",
-      description: "Scale your business with enterprise-grade web applications. We build ultra-fast, secure, and intuitive platforms that elevate your brand and drive unparalleled user engagement.",
-      linkText: "Explore our Web Engineering",
-      linkUrl: "/projects",
+      title: "Estratégia & Branding",
+      description: "Definimos o posicionamento, a identidade e o plano de conteúdos que dão direção e coerência a toda a sua comunicação.",
+      linkText: "Ver Estratégia & Branding",
+      linkUrl: "/solutions/web-platforms",
       themeBg: "radial-gradient(circle at top right, #4f46e5 0%, #3730a3 100%)",
       themePillText: "text-indigo-700",
       themePillBg: "bg-indigo-100/90",
-      cardCategory: "SAAS PLATFORMS",
-      cardHeading: "Global fintech brand launches a highly responsive client portal processing thousands of requests per second",
+      cardCategory: "ESTRATÉGIA",
+      cardHeading: "Uma marca com estratégia clara comunica melhor e cresce de forma consistente em todos os canais.",
       cardImage: "/images/feature_preview.png"
     },
     {
-      title: "Social Media",
-      description: "Dominate the digital space with compelling content and strategies. Our team crafts viral campaigns, interactive digital assets, and data-driven marketing tailored for modern audiences.",
-      linkText: "Explore Social Strategies",
-      linkUrl: "/projects",
+      title: "Gestão de Redes Sociais",
+      description: "Tratamos das suas redes de ponta a ponta — do calendário editorial à publicação e ao engagement — para uma presença sempre relevante.",
+      linkText: "Ver Gestão de Redes Sociais",
+      linkUrl: "/solutions/social-media",
       themeBg: "radial-gradient(circle at top right, #e11d48 0%, #9f1239 100%)",
       themePillText: "text-rose-700",
       themePillBg: "bg-rose-100/90",
-      cardCategory: "CAMPAIGNS",
-      cardHeading: "Leading lifestyle brand increases organic engagement by 300% using our tailored content strategies",
+      cardCategory: "REDES SOCIAIS",
+      cardHeading: "Marcas presentes e consistentes nas redes crescem em alcance orgânico e proximidade com o público.",
       cardImage: "/images/feature_preview.png"
     },
     {
-      title: "2D/3D Assets",
-      description: "Bring your vision to life with bespoke 3D models, intricate 2D illustrations, and fluid animations. We create production-ready assets tailored for games, platforms, and marketing.",
-      linkText: "Explore our Digital Art",
-      linkUrl: "/projects",
+      title: "Criação de Conteúdo",
+      description: "Vídeo, fotografia, design e copywriting pensados para as redes sociais — conteúdo que capta atenção e transmite a sua marca.",
+      linkText: "Ver Criação de Conteúdo",
+      linkUrl: "/solutions/assets",
       themeBg: "radial-gradient(circle at top right, #0eb885 0%, #046a4d 100%)",
       themePillText: "text-[#057c5a]",
       themePillBg: "bg-[#d1fae5]",
-      cardCategory: "ART DIRECTION",
-      cardHeading: "Award-winning studio utilizes our bespoke 3D character models for their latest cinematic trailer",
+      cardCategory: "CONTEÚDO",
+      cardHeading: "Conteúdo criativo e consistente é o que faz uma marca parar o scroll e ficar na memória.",
       cardImage: "/images/feature_preview.png"
     }
   ];
@@ -1128,9 +1123,9 @@ function VisionSection() {
         {/* Central Text */}
         <div className="text-center z-10 max-w-4xl px-4 my-12 lg:my-0 select-none vision-text">
           <h2 className="font-heading font-extrabold text-[32px] md:text-[54px] tracking-tight leading-[1.1] text-white">
-            Um estúdio de videojogos <br />
-            deve elevar <span className="opacity-35">experiências. Com</span> <br />
-            rigor técnico <span className="opacity-35">e paixão real.</span>
+            Uma agência de comunicação <br />
+            faz crescer <span className="opacity-35">marcas. Com</span> <br />
+            estratégia real <span className="opacity-35">e criatividade sem limites.</span>
           </h2>
         </div>
 
@@ -1142,10 +1137,10 @@ function VisionSection() {
             <span className="w-4 h-1 bg-white rounded-full"></span>
           </div>
           <h3 className="text-slate-900 font-heading font-bold text-[16px] leading-snug">
-            Estrutura Full Stack e Desenvolvimento
+            Gestão de Redes Sociais
           </h3>
           <p className="text-slate-400 text-[13px] mt-2 font-sans leading-normal font-medium">
-            Desde a criação de arte e código, até à gestão de comunidade, lore e suporte técnico.
+            Do calendário editorial à publicação e ao engagement diário, tratamos das suas redes de ponta a ponta.
           </p>
         </div>
 
@@ -1153,13 +1148,13 @@ function VisionSection() {
         <div className="hidden lg:block absolute top-16 right-10 xl:right-16 max-w-[310px] bg-white rounded-2xl p-6 shadow-[0_15px_35px_rgba(0,0,0,0.2)] border border-slate-100 rotate-[3deg] hover:rotate-0 hover:scale-105 transition-all duration-300 group z-20 text-left floating-card-fade floating-card-right">
           {/* Badge Icon Bottom Right */}
           <div className="absolute -bottom-4 -right-4 w-10 h-10 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center shadow-md">
-            <span className="text-white font-bold text-lg select-none">🎮</span>
+            <span className="text-white font-bold text-lg select-none">🎬</span>
           </div>
           <h3 className="text-slate-900 font-heading font-bold text-[16px] leading-snug">
-            Projetos Internos & Engine Proprietária
+            Criação de Conteúdo
           </h3>
           <p className="text-slate-400 text-[13px] mt-2 font-sans leading-normal font-medium">
-            INNERfx e INNERCircle trazem experiências de comunidade robustas, estáveis e escaláveis.
+            Vídeo, fotografia, design e copywriting pensados para captar atenção e transmitir a sua marca.
           </p>
         </div>
 
@@ -1172,10 +1167,10 @@ function VisionSection() {
             </svg>
           </div>
           <h3 className="text-slate-900 font-heading font-bold text-[16px] leading-snug">
-            Esports e Presença Competitiva
+            Community Management
           </h3>
           <p className="text-slate-400 text-[13px] mt-2 font-sans leading-normal font-medium">
-            Colocando Portugal no mapa da competição de alto nível com Rainbow Six Siege e mais.
+            Moderação próxima, dinamização e suporte que transformam a sua audiência numa comunidade leal.
           </p>
         </div>
 
@@ -1188,10 +1183,10 @@ function VisionSection() {
             </svg>
           </div>
           <h3 className="text-slate-900 font-heading font-bold text-[16px] leading-snug">
-            Consultoria e Software sob Medida
+            Estratégia & Branding
           </h3>
           <p className="text-slate-400 text-[13px] mt-2 font-sans leading-normal font-medium">
-            Partilhamos a nossa experiência real em infraestrutura, DevOps, UI/UX e marketing de comunidade.
+            Posicionamento, identidade e plano de conteúdos que dão direção e coerência a toda a sua comunicação.
           </p>
         </div>
 
@@ -1203,23 +1198,23 @@ function VisionSection() {
               <span className="w-3.5 h-0.75 bg-white rounded-full"></span>
             </div>
             <h3 className="text-slate-900 font-heading font-bold text-[15px] leading-snug pr-6">
-              Estrutura Full Stack e Desenvolvimento
+              Gestão de Redes Sociais
             </h3>
             <p className="text-slate-400 text-[12px] mt-2 font-sans font-medium">
-              Desde a criação de arte e código, até à gestão de comunidade, lore e suporte técnico.
+              Do calendário editorial à publicação e ao engagement diário, tratamos das suas redes de ponta a ponta.
             </p>
           </div>
 
           {/* Card 2 */}
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-100 relative">
             <div className="absolute -top-3 right-4 w-8 h-8 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center shadow-sm">
-              <span className="text-white font-bold text-md select-none">🎮</span>
+              <span className="text-white font-bold text-md select-none">🎬</span>
             </div>
             <h3 className="text-slate-900 font-heading font-bold text-[15px] leading-snug pr-6">
-              Projetos Internos & Engine Proprietária
+              Criação de Conteúdo
             </h3>
             <p className="text-slate-400 text-[12px] mt-2 font-sans font-medium">
-              INNERfx e INNERCircle trazem experiências de comunidade robustas, estáveis e escaláveis.
+              Vídeo, fotografia, design e copywriting pensados para captar atenção e transmitir a sua marca.
             </p>
           </div>
 
@@ -1231,10 +1226,10 @@ function VisionSection() {
               </svg>
             </div>
             <h3 className="text-slate-900 font-heading font-bold text-[15px] leading-snug pr-6">
-              Esports e Presença Competitiva
+              Community Management
             </h3>
             <p className="text-slate-400 text-[12px] mt-2 font-sans font-medium">
-              Colocando Portugal no mapa da competição de alto nível com Rainbow Six Siege e mais.
+              Moderação próxima, dinamização e suporte que transformam a sua audiência numa comunidade leal.
             </p>
           </div>
 
@@ -1246,10 +1241,10 @@ function VisionSection() {
               </svg>
             </div>
             <h3 className="text-slate-900 font-heading font-bold text-[15px] leading-snug pr-6">
-              Consultoria e Software sob Medida
+              Estratégia & Branding
             </h3>
             <p className="text-slate-400 text-[12px] mt-2 font-sans font-medium">
-              Partilhamos a nossa experiência real em infraestrutura, DevOps, UI/UX e marketing de comunidade.
+              Posicionamento, identidade e plano de conteúdos que dão direção e coerência a toda a sua comunicação.
             </p>
           </div>
         </div>
@@ -1265,67 +1260,54 @@ function SponsorSection() {
     setInterest(getPredominantInterest());
   }, []);
 
-  const steam = (
-    <div key="steam" className="flex items-center gap-2 hover:opacity-100 transition-opacity duration-300">
-      <svg className="w-8 h-8 text-slate-700" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 .297c-6.463 0-11.7 5.237-11.7 11.7 0 5.434 3.702 10.003 8.704 11.332l-1.92-2.738c-.287-.41-.303-.946-.041-1.371l1.795-2.915a3.192 3.192 0 0 1-1.341-2.576c0-1.765 1.43-3.195 3.196-3.195.45 0 .878.093 1.27.262l2.673-3.856c.211-.303.567-.46.924-.417.357.042.668.272.793.606l1.642 4.394a3.187 3.187 0 0 1 1.706.779l4.475-1.9c.414-.176.892-.008 1.118.39l.067.12a11.666 11.666 0 0 1-13.627.502zm.127 15.632a1.69 1.69 0 1 0 0-3.38 1.69 1.69 0 0 0 0 3.38z"/>
-      </svg>
-      <span className="font-sans font-black text-slate-800 text-[18px] tracking-[0.1em] uppercase">Steam</span>
+  const instagram = (
+    <div key="instagram" className="flex items-center hover:opacity-100 transition-opacity duration-300">
+      <span className="font-heading font-black text-slate-800 text-[20px] tracking-tight select-none">Instagram</span>
     </div>
   );
 
-  const epic = (
-    <div key="epic" className="flex items-center gap-2 hover:opacity-100 transition-opacity duration-300">
-      <svg className="w-8 h-8 text-slate-700" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 0L2.4 3v13.5c0 5.8 4.1 8.1 9.6 8.5 5.5-.4 9.6-2.7 9.6-8.5V3L12 0zm5.6 15.5l-2.4 1.2V15h-6.4v1.7l-2.4-1.2v-7l2.4-1.2v-7z6.4v-1.7l2.4 1.2v7z" className="opacity-0" />
-        <path d="M12 0L2.4 3v13.5c0 5.8 4.1 8.1 9.6 8.5 5.5-.4 9.6-2.7 9.6-8.5V3L12 0zm5.6 15.5l-2.4 1.2V15h-6.4v1.7l-2.4-1.2v-7l2.4-1.2V9h6.4v-1.7l2.4 1.2v7z"/>
-      </svg>
-      <span className="font-heading font-black text-slate-800 text-[16px] tracking-tight uppercase">Epic Games</span>
+  const tiktok = (
+    <div key="tiktok" className="flex items-center hover:opacity-100 transition-opacity duration-300">
+      <span className="font-heading font-black text-slate-800 text-[20px] tracking-tight select-none">TikTok</span>
     </div>
   );
 
-  const playstation = (
-    <div key="playstation" className="flex items-center hover:opacity-100 transition-opacity duration-300">
-      <svg className="w-9 h-7 text-slate-700" fill="currentColor" viewBox="0 0 24 20">
-        <path d="M12 3.5c-4.2 0-7.6 1.8-7.6 4.1 0 1.8 2.1 3.3 5 3.9V9.2c-1.3-.4-2.1-1.1-2.1-1.9 0-1.3 1.9-2.3 4.2-2.3s4.2 1 4.2 2.3c0 .8-.8 1.5-2.1 1.9v2.3c2.9-.6 5-2.1 5-3.9 0-2.3-3.4-4.1-7.6-4.1zm-.8 5.6v6.6c0 .7.4 1.2.9 1.2s.9-.5.9-1.2V9.1c0-.7-.4-1.2-.9-1.2s-.9.5-.9 1.2z"/>
-      </svg>
-      <span className="font-sans font-bold text-slate-800 text-[18px] tracking-[0.15em] uppercase pl-1">PS</span>
+  const youtube = (
+    <div key="youtube" className="flex items-center hover:opacity-100 transition-opacity duration-300">
+      <span className="font-heading font-black text-slate-800 text-[20px] tracking-tight select-none">YouTube</span>
     </div>
   );
 
-  const stake = (
-    <div key="stake" className="flex items-center hover:opacity-100 transition-opacity duration-300">
-      <span className="font-heading font-black text-slate-700 text-[26px] tracking-tight italic select-none">Stake</span>
+  const linkedin = (
+    <div key="linkedin" className="flex items-center hover:opacity-100 transition-opacity duration-300">
+      <span className="font-sans font-bold text-slate-800 text-[20px] tracking-tight select-none">LinkedIn</span>
     </div>
   );
 
-  const twitch = (
-    <div key="twitch" className="flex items-center gap-1.5 hover:opacity-100 transition-opacity duration-300">
-      <svg className="w-6 h-6 text-slate-700" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
-      </svg>
-      <span className="font-heading font-extrabold text-slate-800 text-[20px] tracking-tight">twitch</span>
+  const facebook = (
+    <div key="facebook" className="flex items-center hover:opacity-100 transition-opacity duration-300">
+      <span className="font-sans font-bold text-slate-800 text-[20px] tracking-tight select-none">Facebook</span>
     </div>
   );
 
-  const kick = (
-    <div key="kick" className="flex items-center hover:opacity-100 transition-opacity duration-300">
-      <span className="font-sans font-black text-slate-800 text-[24px] tracking-tighter italic select-none">KICK</span>
+  const x = (
+    <div key="x" className="flex items-center hover:opacity-100 transition-opacity duration-300">
+      <span className="font-heading font-black text-slate-800 text-[24px] tracking-tighter select-none">X</span>
     </div>
   );
 
-  // Re-order sponsors: consulting focus puts professional publishers first, gaming focus puts streaming/media channels first
-  let orderedSponsors = [steam, epic, playstation, stake, twitch, kick];
+  // Re-order platforms: social-first visitors see short-form channels first, brand-first visitors see professional channels first
+  let orderedSponsors = [instagram, tiktok, youtube, linkedin, facebook, x];
   if (interest === "consulting") {
-    orderedSponsors = [playstation, epic, steam, twitch, stake, kick];
-  } else if (interest === "esports" || interest === "gaming") {
-    orderedSponsors = [twitch, kick, steam, epic, playstation, stake];
+    orderedSponsors = [linkedin, instagram, facebook, youtube, x, tiktok];
+  } else if (interest === "projects" || interest === "gaming") {
+    orderedSponsors = [tiktok, instagram, youtube, x, facebook, linkedin];
   }
 
   return (
     <section className="w-full bg-white py-16 border-b border-slate-100 flex flex-col items-center justify-center select-none overflow-hidden">
       <span className="text-[11px] font-heading font-extrabold text-slate-400 tracking-[0.15em] uppercase mb-8">
-        Trusted by 10,000+ businesses including:
+        As plataformas onde levamos a sua marca mais longe:
       </span>
       <div className="w-full max-w-7xl px-6 md:px-10 flex flex-wrap items-center justify-center gap-12 md:gap-16 lg:gap-24 opacity-60">
         {orderedSponsors}
@@ -1350,19 +1332,19 @@ function BentoGridSection() {
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 2a4 4 0 00-4 4v1h8V6a4 4 0 00-4-4zm3 3H7v1h6V5zm-8 3a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2H5zm3.75 3a.75.75 0 000 1.5h2.5a.75.75 0 000-1.5h-2.5z" clipRule="evenodd" />
             </svg>
-            <span>A Engine</span>
+            <span>O Serviço Principal</span>
           </div>
           <h3 className="text-[#0f172a] font-heading font-extrabold text-2xl lg:text-3xl tracking-tight leading-tight mb-3">
-            INNERfx — Plataforma modular de criação
+            Gestão de Redes Sociais de ponta a ponta
           </h3>
           <p className="text-slate-500 text-[14px] lg:text-[15px] font-sans leading-relaxed">
-            Desenvolvemos uma engine proprietária de alta performance e escalabilidade para gestão de servidores GTA V (FiveM).
+            Assumimos a operação diária das suas redes — estratégia, calendário, publicação e engagement — como uma verdadeira extensão da sua equipa.
           </p>
         </div>
-        <a href="https://innerfx.sbs" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-slate-800 font-heading font-bold text-[14px] mt-8 hover:underline">
-          <span>Saber mais sobre a engine</span>
+        <Link href="/solutions/social-media" className="inline-flex items-center gap-2 text-slate-800 font-heading font-bold text-[14px] mt-8 hover:underline">
+          <span>Ver o serviço</span>
           <span>→</span>
-        </a>
+        </Link>
       </div>
       
       <div className="relative w-full md:w-[260px] h-[260px] md:h-auto flex items-center justify-center mt-6 md:mt-0">
@@ -1371,24 +1353,24 @@ function BentoGridSection() {
         
         <div className="relative w-[160px] h-[250px] bg-slate-900 rounded-[28px] border-4 border-slate-800 p-2 shadow-2xl overflow-hidden flex flex-col justify-start">
           <div className="w-16 h-3 bg-slate-800 rounded-full mx-auto mb-2"></div>
-          <div className="text-center font-heading font-black text-[12px] text-blue-600 mb-2">inner</div>
+          <div className="text-center mb-2"><Logo className="text-[12px] text-blue-600" /></div>
           
           <div className="flex flex-col gap-1.5 w-full text-left">
             <div className="bg-white rounded-lg p-1.5 flex items-center justify-between border border-slate-100 shadow-sm">
-              <span className="text-[9px] font-bold text-slate-700">Plugins</span>
-              <span className="text-[8px] bg-blue-50 text-blue-600 px-1 rounded font-medium">Modular</span>
+              <span className="text-[9px] font-bold text-slate-700">Instagram</span>
+              <span className="text-[8px] bg-blue-50 text-blue-600 px-1 rounded font-medium">Diário</span>
             </div>
             <div className="bg-white rounded-lg p-1.5 flex items-center justify-between border border-slate-100 shadow-sm">
-              <span className="text-[9px] font-bold text-slate-700">Performance</span>
-              <span className="text-[8px] bg-indigo-50 text-indigo-600 px-1 rounded font-medium">Latência Mínima</span>
+              <span className="text-[9px] font-bold text-slate-700">TikTok</span>
+              <span className="text-[8px] bg-indigo-50 text-indigo-600 px-1 rounded font-medium">Reels</span>
             </div>
             <div className="bg-white rounded-lg p-1.5 flex items-center justify-between border border-slate-100 shadow-sm">
-              <span className="text-[9px] font-bold text-slate-700">Dev Tools</span>
-              <span className="text-[8px] bg-purple-50 text-purple-600 px-1 rounded font-medium">APIs & Debug</span>
+              <span className="text-[9px] font-bold text-slate-700">LinkedIn</span>
+              <span className="text-[8px] bg-purple-50 text-purple-600 px-1 rounded font-medium">Semanal</span>
             </div>
             <div className="bg-white rounded-lg p-1.5 flex items-center justify-between border border-slate-100 shadow-sm">
-              <span className="text-[9px] font-bold text-slate-700">Hosting</span>
-              <span className="text-[8px] bg-emerald-50 text-emerald-600 px-1 rounded font-medium">Certificado</span>
+              <span className="text-[9px] font-bold text-slate-700">Relatórios</span>
+              <span className="text-[8px] bg-emerald-50 text-emerald-600 px-1 rounded font-medium">Mensal</span>
             </div>
           </div>
         </div>
@@ -1403,13 +1385,13 @@ function BentoGridSection() {
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
             <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
           </svg>
-          <span>O Servidor</span>
+          <span>O Conteúdo</span>
         </div>
         <h3 className="text-[#0f172a] font-heading font-extrabold text-2xl tracking-tight leading-tight mb-3">
-          INNERCircle — Servidor de Roleplay Flagship
+          Criação de Conteúdo que se destaca
         </h3>
         <p className="text-slate-500 text-[14px] lg:text-[15px] font-sans leading-relaxed">
-          Uma experiência imersiva e justa de Roleplay construída sobre a engine INNERfx, com economia equilibrada e moderação altamente ativa.
+          Vídeo, fotografia, design e copywriting pensados para as redes — conteúdo que capta atenção e transmite a personalidade da sua marca.
         </p>
       </div>
       
@@ -1424,8 +1406,8 @@ function BentoGridSection() {
             </svg>
           </div>
           <div className="text-left">
-            <span className="text-[9px] font-bold text-slate-400 block tracking-wider uppercase">Beta Fechado</span>
-            <span className="text-[14px] font-extrabold text-slate-900">Brevemente disponível</span>
+            <span className="text-[9px] font-bold text-slate-400 block tracking-wider uppercase">Formatos</span>
+            <span className="text-[14px] font-extrabold text-slate-900">Reels, Foto & Design</span>
           </div>
         </div>
       </div>
@@ -1439,13 +1421,13 @@ function BentoGridSection() {
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
           </svg>
-          <span>Esports Division</span>
+          <span>Comunidade</span>
         </div>
         <h3 className="text-[#0f172a] font-heading font-extrabold text-2xl tracking-tight leading-tight mb-3">
-          Divisão Competitiva de Elite
+          Community Management dedicado
         </h3>
         <p className="text-slate-500 text-[14px] lg:text-[15px] font-sans leading-relaxed">
-          Staff técnico dedicado, coaching profissional e presença consolidada com equipa de Rainbow Six Siege.
+          Moderação próxima, dinamização diária e suporte que transformam a sua audiência numa comunidade ativa e leal.
         </p>
       </div>
       
@@ -1470,20 +1452,20 @@ function BentoGridSection() {
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
           </svg>
-          <span>Consultoria</span>
+          <span>Estratégia</span>
         </div>
         <h3 className="text-[#0f172a] font-heading font-extrabold text-xl tracking-tight leading-tight mb-2">
-          Expertise ao serviço dos clientes
+          Estratégia & Branding
         </h3>
         <p className="text-slate-500 text-[13px] font-sans leading-relaxed">
-          Software dev, infraestrutura, DevOps, UI/UX e marketing de comunidade.
+          Posicionamento, identidade de marca, tom de voz e plano de conteúdos.
         </p>
       </div>
-      
+
       <div className="flex flex-wrap gap-2 mt-4 z-10">
-        <span className="px-3 py-1.5 rounded-full bg-teal-100 text-teal-700 font-heading font-bold text-[10px] uppercase shadow-sm">Diagnóstico</span>
-        <span className="px-3 py-1.5 rounded-full bg-teal-100 text-teal-700 font-heading font-bold text-[10px] uppercase shadow-sm">Scope Fechado</span>
-        <span className="px-3 py-1.5 rounded-full bg-teal-100 text-teal-700 font-heading font-bold text-[10px] uppercase shadow-sm">Retainer</span>
+        <span className="px-3 py-1.5 rounded-full bg-teal-100 text-teal-700 font-heading font-bold text-[10px] uppercase shadow-sm">Posicionamento</span>
+        <span className="px-3 py-1.5 rounded-full bg-teal-100 text-teal-700 font-heading font-bold text-[10px] uppercase shadow-sm">Identidade</span>
+        <span className="px-3 py-1.5 rounded-full bg-teal-100 text-teal-700 font-heading font-bold text-[10px] uppercase shadow-sm">Plano</span>
       </div>
     </div>
   );
@@ -1496,13 +1478,13 @@ function BentoGridSection() {
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
             </svg>
-            <span>Monetização e Negócios</span>
+            <span>Porquê a stratacoms</span>
           </div>
           <h3 className="text-[#0f172a] font-heading font-extrabold text-xl lg:text-2xl tracking-tight leading-tight mb-2">
-            Modelo de Negócio Diversificado e Resiliente
+            Uma equipa criativa focada em resultados
           </h3>
           <p className="text-slate-500 text-[13px] lg:text-[14px] font-sans leading-relaxed">
-            Planos de subscrição mensal para servidores, sistema de upvotes, marketplaces de scripts/Tebex, tiers VIP e ad-serving inovador.
+            Estratégia, conteúdo e gestão num só parceiro — presença consistente, comunidade ativa e crescimento medido por dados.
           </p>
         </div>
       </div>
@@ -1511,16 +1493,16 @@ function BentoGridSection() {
         <div className="absolute w-[200px] h-[200px] rounded-full border border-slate-200 bg-slate-50/5 scale-90"></div>
         
         <div className="absolute top-2 left-6 bg-white border border-slate-100 p-1.5 rounded-full flex items-center gap-1 shadow-sm transform group-hover:-translate-y-1 transition-transform duration-300">
-          <span className="text-[9px] font-bold text-slate-700 pr-1">Subscrições VIP</span>
+          <span className="text-[9px] font-bold text-slate-700 pr-1">Estratégia</span>
         </div>
         <div className="absolute top-12 right-2 bg-white border border-slate-100 p-1.5 rounded-full flex items-center gap-1 shadow-sm transform group-hover:translate-x-1 transition-transform duration-300">
-          <span className="text-[9px] font-bold text-slate-700 pr-1">Tebex</span>
+          <span className="text-[9px] font-bold text-slate-700 pr-1">Conteúdo</span>
         </div>
         <div className="absolute bottom-4 left-4 bg-white border border-slate-100 p-1.5 rounded-full flex items-center gap-1 shadow-sm transform group-hover:translate-y-1 transition-transform duration-300">
-          <span className="text-[9px] font-bold text-slate-700 pr-1">Ad Serving</span>
+          <span className="text-[9px] font-bold text-slate-700 pr-1">Redes Sociais</span>
         </div>
         <div className="absolute bottom-10 right-8 bg-white border border-slate-100 p-1.5 rounded-full flex items-center gap-1 shadow-sm transform group-hover:translate-x-0.5 transition-transform duration-300">
-          <span className="text-[9px] font-bold text-slate-700 pr-1">Upvotes</span>
+          <span className="text-[9px] font-bold text-slate-700 pr-1">Comunidade</span>
         </div>
       </div>
     </div>
@@ -1643,7 +1625,7 @@ function NewsletterSection() {
             Fique a par de tudo
           </h3>
           <p className="text-slate-300 text-[14px] lg:text-[15px] leading-relaxed">
-            Subscreva a nossa newsletter e receba as últimas novidades sobre videojogos, plataformas web, assets de arte e oportunidades de carreira diretamente no seu email.
+            Subscreva a nossa newsletter e receba as últimas novidades sobre redes sociais, criação de conteúdo, tendências de comunicação e oportunidades de carreira diretamente no seu email.
           </p>
         </div>
 
@@ -1656,7 +1638,7 @@ function NewsletterSection() {
                 </svg>
               </div>
               <h4 className="font-heading font-bold text-lg text-white mb-2">Subscrição efetuada!</h4>
-              <p className="text-slate-400 text-sm">Obrigado por se juntar à INNER Studios. A partir de agora receberá todas as novidades no seu email.</p>
+              <p className="text-slate-400 text-sm">Obrigado por se juntar à stratacoms. A partir de agora receberá todas as novidades no seu email.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -1710,7 +1692,7 @@ function NewsletterSection() {
                     <Link href="/cookie-policy" target="_blank" className="underline hover:text-white transition-colors">
                       Política de Cookies
                     </Link>{" "}
-                    da INNER Studios.
+                    da stratacoms.
                   </span>
                 }
               />
@@ -1728,28 +1710,28 @@ export default function LandingHero() {
   const [activeThemeIndex, setActiveThemeIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [displayedWord1, setDisplayedWord1] = useState("software");
-  const [displayedWord2, setDisplayedWord2] = useState("Gaming");
+  const [displayedWord1, setDisplayedWord1] = useState("content");
+  const [displayedWord2, setDisplayedWord2] = useState("Community");
 
   // Force initial slide adaptation based on calculated predominant interest
   useEffect(() => {
     const interest = getPredominantInterest();
-    if (interest === "esports") {
-      setActiveThemeIndex(1); // Slide 1: software / Esports
+    if (interest === "consulting") {
+      setActiveThemeIndex(1); // Slide 1: content / Brands (Estratégia & Branding focus)
       setDisplayedWord1(THEMES[1].word1);
       setDisplayedWord2(THEMES[1].word2);
-    } else if (interest === "careers" || interest === "about") {
-      setActiveThemeIndex(2); // Slide 2: software / Creators (Team / Company culture focused)
+    } else if (interest === "projects") {
+      setActiveThemeIndex(2); // Slide 2: content / Social (Gestão de Redes Sociais focus)
       setDisplayedWord1(THEMES[2].word1);
       setDisplayedWord2(THEMES[2].word2);
-    } else if (interest === "gaming") {
-      setActiveThemeIndex(0); // Slide 0: software / Gaming
-      setDisplayedWord1(THEMES[0].word1);
-      setDisplayedWord2(THEMES[0].word2);
-    } else if (interest === "projects") {
-      setActiveThemeIndex(3); // Slide 3: assets / Gaming (Portfolio/Assets focus)
+    } else if (interest === "careers" || interest === "about") {
+      setActiveThemeIndex(3); // Slide 3: stories / Creators (Criação de Conteúdo focus)
       setDisplayedWord1(THEMES[3].word1);
       setDisplayedWord2(THEMES[3].word2);
+    } else if (interest === "gaming" || interest === "esports") {
+      setActiveThemeIndex(0); // Slide 0: content / Community (Community Management focus)
+      setDisplayedWord1(THEMES[0].word1);
+      setDisplayedWord2(THEMES[0].word2);
     }
   }, []);
 
@@ -1826,7 +1808,7 @@ export default function LandingHero() {
   // Sliding text switcher animation on theme changes
   useEffect(() => {
     // Skip on initial mount
-    if (activeThemeIndex === 0 && displayedWord1 === "software" && displayedWord2 === "Gaming") {
+    if (activeThemeIndex === 0 && displayedWord1 === "content" && displayedWord2 === "Community") {
       return;
     }
 
@@ -1891,7 +1873,7 @@ export default function LandingHero() {
       <FeatureSection activeThemeIndex={activeThemeIndex} setActiveThemeIndex={switchThemeWithAnimation} progress={progress} />
       <VisionSection />
       <BentoGridSection />
-      <TeamSection />
+      {/* <TeamSection /> temporariamente escondido */}
       <NewsletterSection />
       <Footer />
     </div>

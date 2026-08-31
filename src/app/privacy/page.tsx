@@ -4,7 +4,7 @@ import Navbar from "../../components/Navbar";
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  description: 'Our privacy policy explains how Inner Studios collects, uses, and protects your personal information.',
+  description: 'Our privacy policy explains how stratacoms collects, uses, and protects your personal information.',
   alternates: {
     canonical: '/privacy',
   },
@@ -73,7 +73,7 @@ export default function PrivacyPolicyPage() {
           <section id="introduction" className="scroll-mt-32">
             <h2>1. Introduction</h2>
             <p>
-              Thank you for choosing to be part of our community at Inner Studios ("Company", "we", "us", "our"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice, or our practices with regards to your personal information, please contact us.
+              Thank you for choosing to be part of our community at stratacoms ("Company", "we", "us", "our"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice, or our practices with regards to your personal information, please contact us.
             </p>
             <p>
               When you visit our website and more generally, use any of our services (the "Services", which include the Website), we appreciate that you are trusting us with your personal information. We take your privacy very seriously.
@@ -147,10 +147,10 @@ export default function PrivacyPolicyPage() {
           <section id="contact" className="scroll-mt-32">
             <h2>8. Contact Us</h2>
             <p>
-              If you have questions or comments about this notice, you may email us at <strong>privacy@innerstudios.com</strong> or by post to:
+              If you have questions or comments about this notice, you may email us at <strong>privacy@stratacoms.com</strong> or by post to:
             </p>
             <address className="not-italic text-slate-500 mt-4 bg-slate-50 p-6 rounded-2xl border border-slate-100">
-              <strong>Inner Studios, Inc.</strong><br/>
+              <strong>stratacoms, Inc.</strong><br/>
               123 Innovation Drive<br/>
               Tech District, London<br/>
               United Kingdom

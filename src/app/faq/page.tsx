@@ -3,51 +3,51 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Menu, X, Search, PlayCircle, FileCheck, LayoutGrid, List, ArrowRightLeft, CreditCard } from "lucide-react";
+import { ChevronDown, Menu, X, Search, PlayCircle, Share2, Film, Users, Compass, BarChart3 } from "lucide-react";
 
 import Navbar from "../../components/Navbar";
 
 const CATEGORIES = [
   {
     id: 1,
-    title: "Getting Started",
+    title: "Como começar",
     articles: 5,
     icon: PlayCircle,
     color: "bg-blue-100 text-blue-600",
   },
   {
     id: 2,
-    title: "Verification",
+    title: "Gestão de Redes Sociais",
     articles: 5,
-    icon: FileCheck,
+    icon: Share2,
     color: "bg-fuchsia-100 text-fuchsia-600",
   },
   {
     id: 3,
-    title: "Integration",
+    title: "Criação de Conteúdo",
     articles: 5,
-    icon: LayoutGrid,
+    icon: Film,
     color: "bg-teal-100 text-teal-600",
   },
   {
     id: 4,
-    title: "Payment methods",
+    title: "Community Management",
     articles: 5,
-    icon: List,
+    icon: Users,
     color: "bg-emerald-100 text-emerald-600",
   },
   {
     id: 5,
-    title: "Transactions",
+    title: "Estratégia & Branding",
     articles: 5,
-    icon: ArrowRightLeft,
+    icon: Compass,
     color: "bg-blue-600 text-white", // Solid background based on reference image
   },
   {
     id: 6,
-    title: "Refunds and chargebacks",
+    title: "Relatórios & Resultados",
     articles: 5,
-    icon: CreditCard,
+    icon: BarChart3,
     color: "bg-purple-100 text-purple-600",
   }
 ];
@@ -82,8 +82,8 @@ export default function FAQPage() {
                 lineHeight: "1.05"
               }}
             >
-              Answers <br />
-              to common
+              Respostas <br />
+              às suas
             </span>
             <span className="inline-block overflow-hidden py-2 px-6 -rotate-[2deg] select-none">
               <span 
@@ -98,7 +98,7 @@ export default function FAQPage() {
                   marginTop: "clamp(-1.5rem, -3vw, -0.75rem)"
                 }}
               >
-                Questions
+                Perguntas
               </span>
             </span>
           </h1>
@@ -116,7 +116,7 @@ export default function FAQPage() {
                 <Search className="size-6 text-slate-400 mr-4 shrink-0" />
                 <input 
                   type="text" 
-                  placeholder="Search topics..."
+                  placeholder="Pesquisar temas..."
                   className="w-full h-full bg-transparent outline-none text-slate-700 text-lg font-medium placeholder:text-slate-400 placeholder:font-normal"
                 />
               </div>
@@ -147,7 +147,7 @@ export default function FAQPage() {
                   </span>
                 </div>
                 <p className="text-slate-400 text-[14px] font-medium">
-                  {cat.articles} Articles
+                  {cat.articles} Artigos
                 </p>
               </div>
             </Link>

@@ -1,35 +1,35 @@
 import React from "react";
 import { Metadata } from "next";
 import Link from "next/link";
-import { MonitorSmartphone, Cloud, Lock, Cpu, Database, ArrowRight } from "lucide-react";
+import { Compass, Target, PenTool, BarChart3, Lightbulb, ArrowRight } from "lucide-react";
 import Navbar from "../../../components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Web Platforms Solutions | Inner Studios",
-  description: "Enterprise SaaS architectures, high-performance web applications, and secure RESTful integration pipelines built for modern scale.",
+  title: "Estratégia & Branding | stratacoms",
+  description: "Estratégia de comunicação e identidade de marca: posicionamento, tom de voz, identidade visual e planos de conteúdo que dão coerência à sua presença.",
 };
 
 export default function WebPlatformsSolutionPage() {
   const features = [
     {
-      icon: <Cloud className="size-6 text-indigo-500" />,
-      title: "Infraestrutura Cloud & DevOps",
-      desc: "Automação de pipelines de CI/CD via GitHub Actions e Docker, com deployments automatizados em VPS sob máxima disponibilidade."
+      icon: <Target className="size-6 text-indigo-500" />,
+      title: "Posicionamento & Estratégia",
+      desc: "Definimos quem é a sua marca, para quem comunica e o que a distingue — a base estratégica que orienta todas as decisões de comunicação."
     },
     {
-      icon: <Database className="size-6 text-indigo-500" />,
-      title: "Bases de Dados Escaláveis",
-      desc: "Desenho e otimização de esquemas relacionais avançados com PostgreSQL e bases não relacionais em Redis para cache ultrarrápido."
+      icon: <PenTool className="size-6 text-indigo-500" />,
+      title: "Identidade Visual & Verbal",
+      desc: "Criação de identidade visual, tom de voz e guidelines de marca que garantem uma presença coerente e reconhecível em todos os canais."
     },
     {
-      icon: <Lock className="size-6 text-indigo-500" />,
-      title: "Segurança de Alta Tolerância",
-      desc: "Implementação de tokens JWT seguros, rotas protegidas de API, encriptação SSL/TLS de nível industrial e proteção contra ataques DDoS."
+      icon: <Lightbulb className="size-6 text-indigo-500" />,
+      title: "Plano de Conteúdos",
+      desc: "Definição de pilares de conteúdo, linhas editoriais e campanhas alinhadas com os objetivos de negócio e com a jornada da sua audiência."
     },
     {
-      icon: <Cpu className="size-6 text-indigo-500" />,
-      title: "Desenvolvimento Full Stack",
-      desc: "Integração do ecossistema Next.js com frameworks backend potentes como FastAPI (Python) para fluxos de processamento robustos."
+      icon: <BarChart3 className="size-6 text-indigo-500" />,
+      title: "Análise & Otimização",
+      desc: "Medimos o impacto da estratégia com base em dados e ajustamos o rumo de forma contínua para maximizar resultados ao longo do tempo."
     }
   ];
 
@@ -45,15 +45,15 @@ export default function WebPlatformsSolutionPage() {
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 font-bold text-[11px] tracking-widest uppercase mb-6 shadow-sm">
-            <MonitorSmartphone className="size-3.5" />
-            <span>Solutions / Web Platforms</span>
+            <Compass className="size-3.5" />
+            <span>Serviços / Estratégia & Branding</span>
           </div>
           <h1 className="font-heading font-black text-[44px] md:text-[68px] leading-[1.05] tracking-tight text-slate-900 mb-6">
-            Aplicações Corporativas, <br />
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Sem Picos de Atraso</span>
+            Marca com Direção, <br />
+            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Comunicação com Propósito</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto">
-            Criamos plataformas digitais prontas para processar milhares de pedidos por segundo, com interfaces fluidas e seguras.
+            Antes de comunicar, é preciso saber o que dizer e porquê. Definimos a estratégia e a identidade que dão coerência e força a toda a sua presença.
           </p>
         </div>
       </div>
@@ -62,8 +62,8 @@ export default function WebPlatformsSolutionPage() {
       <div className="max-w-5xl mx-auto px-6 mt-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {features.map((item, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className="bg-white rounded-3xl p-6 lg:p-8 border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.01)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.04)] hover:-translate-y-0.5 transition-all duration-300 flex items-start gap-5 text-left"
             >
               <div className="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center shrink-0">
@@ -83,22 +83,22 @@ export default function WebPlatformsSolutionPage() {
         <div className="w-full rounded-[36px] bg-slate-900 p-8 lg:p-12 text-white relative overflow-hidden shadow-2xl flex flex-col md:flex-row justify-between items-center gap-10">
           <div className="absolute inset-0 bg-noise opacity-5 mix-blend-overlay pointer-events-none"></div>
           <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
-          
+
           <div className="text-left max-w-lg relative z-10">
-            <span className="text-indigo-400 font-bold text-[11px] tracking-widest uppercase block mb-3">Enterprise SaaS Billing & Auth</span>
+            <span className="text-indigo-400 font-bold text-[11px] tracking-widest uppercase block mb-3">Fundação da Marca</span>
             <h3 className="font-heading font-extrabold text-[28px] lg:text-[36px] leading-tight mb-4">
-              Integrações de Facturação & Gateways
+              A estratégia que sustenta tudo o resto
             </h3>
             <p className="text-slate-300 text-[14px] lg:text-[15px] leading-relaxed">
-              Integramos os principais meios de pagamento como Stripe, PayPal e Tebex. Construímos áreas de administração customizadas com dados em tempo real sobre subscrições, volume de vendas e métricas financeiras.
+              Construímos a base estratégica da sua comunicação — posicionamento, identidade e plano de conteúdos — para que cada publicação, campanha e interação trabalhe para o mesmo objetivo de negócio.
             </p>
           </div>
           <div className="shrink-0 relative z-10 w-full md:w-auto">
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-white text-slate-900 font-heading font-bold px-8 py-4 rounded-2xl hover:bg-slate-100 transition-colors shadow-md group"
             >
-              <span>Pedir uma Demonstração</span>
+              <span>Definir a Minha Estratégia</span>
               <ArrowRight className="size-4 group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </div>

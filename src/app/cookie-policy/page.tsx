@@ -4,7 +4,7 @@ import Navbar from "../../components/Navbar";
 
 export const metadata: Metadata = {
   title: 'Cookie Policy',
-  description: 'Our Cookie Policy explains how Inner Studios uses cookies and other tracking technologies on our website.',
+  description: 'Our Cookie Policy explains how stratacoms uses cookies and other tracking technologies on our website.',
   alternates: {
     canonical: '/cookie-policy',
   },
@@ -36,7 +36,7 @@ export default function CookiePolicyPage() {
             Cookie Policy
           </h1>
           <p className="text-lg text-slate-500 font-medium">
-            This Cookie Policy explains how Inner Studios uses cookies and similar technologies to recognize, track, and personalize your experience on our website.
+            This Cookie Policy explains how stratacoms uses cookies and similar technologies to recognize, track, and personalize your experience on our website.
           </p>
           <div className="mt-8 text-[13px] font-bold text-slate-400">
             LAST UPDATED: {lastUpdated}
@@ -74,7 +74,7 @@ export default function CookiePolicyPage() {
               Cookies are small text files that are stored on your device (computer, tablet, or smartphone) when you visit a website. They are widely used to make websites work or perform more efficiently, as well as to provide reporting and customization information.
             </p>
             <p>
-              Cookies set by the website owner (in this case, Inner Studios) are called "first-party cookies". Cookies set by parties other than the website owner are called "third-party cookies". Third-party cookies enable third-party features or functionality to be provided on or through the website (such as interactive forms, analytics, and advertising).
+              Cookies set by the website owner (in this case, stratacoms) are called "first-party cookies". Cookies set by parties other than the website owner are called "third-party cookies". Third-party cookies enable third-party features or functionality to be provided on or through the website (such as interactive forms, analytics, and advertising).
             </p>
           </section>
 
@@ -117,7 +117,7 @@ export default function CookiePolicyPage() {
           <section id="contact-us" className="scroll-mt-32">
             <h2>6. Contact Us</h2>
             <p>
-              If you have questions or comments about this Cookie Policy, you may email us at <strong>privacy@innerstudios.pt</strong>.
+              If you have questions or comments about this Cookie Policy, you may email us at <strong>privacy@stratacoms.pt</strong>.
             </p>
           </section>
         </main>

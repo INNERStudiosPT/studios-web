@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Blog & Resources',
-  description: 'Insights, tutorials, and latest news from the Inner Studios team on web engineering, game development, and digital marketing.',
+  title: 'Blog & Recursos',
+  description: 'Ideias, guias e novidades da equipa stratacoms sobre redes sociais, criação de conteúdo, community management e estratégia de comunicação.',
   alternates: {
     canonical: '/blog',
   },

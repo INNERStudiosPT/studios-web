@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Us',
-  description: 'Learn about Inner Studios. We engineer robust digital solutions, immersive games, and premium web platforms for modern businesses.',
+  title: 'Sobre nós',
+  description: 'Conheça a stratacoms. Ajudamos marcas a comunicar melhor com gestão de redes sociais, criação de conteúdo, community management e estratégia.',
   alternates: {
     canonical: '/company/about',
   },

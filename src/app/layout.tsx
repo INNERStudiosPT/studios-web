@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Comfortaa } from "next/font/google";
 import "./globals.css";
 import CookieBanner from "../components/CookieBanner";
 import MicrosoftClarity from "../components/MicrosoftClarity";
@@ -16,44 +16,49 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const comfortaa = Comfortaa({
+  variable: "--font-comfortaa",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://innerstudios.pt'),
+  metadataBase: new URL('https://stratacoms.pt'),
   title: {
-    template: '%s | Inner Studios',
-    default: 'Inner Studios | The New Standard of Digital Craft',
+    template: '%s | stratacoms',
+    default: 'stratacoms | Agência de Comunicação e Redes Sociais',
   },
-  description: 'Inner Studios is a leading creative production house designing and engineering modern web solutions for ambitious brands worldwide.',
-  keywords: ['Inner Studios', 'Creative Production', 'Web Engineering', 'Game Development', 'Digital Assets', 'SaaS', 'Portugal'],
-  authors: [{ name: 'Inner Studios' }],
-  creator: 'Inner Studios',
-  publisher: 'Inner Studios',
+  description: 'A stratacoms é uma agência de comunicação portuguesa especializada em gestão de redes sociais, criação de conteúdo, community management e estratégia de marca.',
+  keywords: ['stratacoms', 'Agência de Comunicação', 'Gestão de Redes Sociais', 'Criação de Conteúdo', 'Community Management', 'Estratégia e Branding', 'Social Media', 'Portugal'],
+  authors: [{ name: 'stratacoms' }],
+  creator: 'stratacoms',
+  publisher: 'stratacoms',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: 'Inner Studios | The New Standard of Digital Craft',
-    description: 'Inner Studios is a leading creative production house designing and engineering modern web solutions for ambitious brands worldwide.',
-    url: 'https://innerstudios.pt',
-    siteName: 'Inner Studios',
+    title: 'stratacoms | Agência de Comunicação e Redes Sociais',
+    description: 'A stratacoms é uma agência de comunicação portuguesa especializada em gestão de redes sociais, criação de conteúdo, community management e estratégia de marca.',
+    url: 'https://stratacoms.pt',
+    siteName: 'stratacoms',
     images: [
       {
         url: '/images/feature_preview.png', // Replace with your actual hero OG image
         width: 1200,
         height: 630,
-        alt: 'Inner Studios Hero Image',
+        alt: 'stratacoms Hero Image',
       },
     ],
-    locale: 'en_US',
+    locale: 'pt_PT',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Inner Studios | The New Standard of Digital Craft',
-    description: 'Inner Studios is a leading creative production house designing and engineering modern web solutions for ambitious brands worldwide.',
+    title: 'stratacoms | Agência de Comunicação e Redes Sociais',
+    description: 'A stratacoms é uma agência de comunicação portuguesa especializada em gestão de redes sociais, criação de conteúdo, community management e estratégia de marca.',
     images: ['/images/feature_preview.png'],
-    creator: '@innerstudios',
+    creator: '@stratacoms',
   },
   robots: {
     index: true,
@@ -81,7 +86,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${comfortaa.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <PostHogProvider>

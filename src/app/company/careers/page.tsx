@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import Checkbox from "../../../components/Checkbox";
 import Turnstile from "../../../components/Turnstile";
 import posthog from "posthog-js";
+import { CONTENT_API_ENABLED, CONTENT_API_BASE } from "@/config/api";
 
 interface Job {
   id: string;
@@ -20,24 +21,24 @@ interface Job {
 
 const STATIC_FALLBACK_POSITIONS: Job[] = [
   {
-    id: "senior-frontend-engineer",
-    title: "Senior Frontend Engineer",
-    department: "Engineering",
-    location: "Lisbon, Portugal (Hybrid)",
+    id: "social-media-manager",
+    title: "Social Media Manager",
+    department: "Redes Sociais",
+    location: "Lisboa, Portugal (Híbrido)",
     type: "Full-time",
   },
   {
-    id: "product-designer",
-    title: "Product Designer",
-    department: "Design",
-    location: "Remote",
+    id: "content-creator",
+    title: "Content Creator (Vídeo & Foto)",
+    department: "Conteúdo",
+    location: "Remoto",
     type: "Full-time",
   },
   {
-    id: "backend-go-developer",
-    title: "Backend Go Developer",
-    department: "Engineering",
-    location: "Lisbon, Portugal",
+    id: "community-manager",
+    title: "Community Manager",
+    department: "Comunidade",
+    location: "Lisboa, Portugal",
     type: "Full-time",
   },
 ];
@@ -121,8 +122,14 @@ export default function CareersPage() {
 
   useEffect(() => {
     const fetchJobs = async () => {
+      // API de conteúdos temporariamente desativada — usar dados estáticos.
+      if (!CONTENT_API_ENABLED) {
+        setPositions(STATIC_FALLBACK_POSITIONS);
+        setLoading(false);
+        return;
+      }
       try {
-        const res = await fetch("https://api.innerstudios.pt/v1/content/jobs");
+        const res = await fetch(`${CONTENT_API_BASE}/jobs`);
         if (!res.ok) throw new Error("API response error");
         const data = await res.json();
         
@@ -167,7 +174,7 @@ export default function CareersPage() {
           
           {/* Careers Pill */}
           <div className="relative z-10 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[12px] font-bold tracking-widest uppercase mb-10 shadow-sm">
-            Careers
+            Carreiras
           </div>
 
           {/* Title */}
@@ -179,8 +186,8 @@ export default function CareersPage() {
                 lineHeight: "1.05"
               }}
             >
-              Build <br />
-              the future
+              Cresce <br />
+              connosco
             </span>
             <span className="inline-block overflow-hidden py-2 px-6 -rotate-[2deg] select-none">
               <span 
@@ -195,7 +202,7 @@ export default function CareersPage() {
                   marginTop: "clamp(-1.5rem, -3vw, -0.75rem)"
                 }}
               >
-                With us
+                Na stratacoms
               </span>
             </span>
           </h1>
@@ -213,7 +220,7 @@ export default function CareersPage() {
                 <Search className="size-6 text-slate-400 mr-4 shrink-0" />
                 <input 
                   type="text" 
-                  placeholder="Search open positions..."
+                  placeholder="Pesquisar vagas abertas..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full h-full bg-transparent outline-none text-slate-700 text-lg font-medium placeholder:text-slate-400 placeholder:font-normal"
@@ -228,10 +235,10 @@ export default function CareersPage() {
           
           <div className="text-center max-w-2xl mb-16">
             <h2 className="font-heading font-extrabold text-[32px] md:text-[40px] text-slate-900 mb-6">
-              Open Positions
+              Vagas Abertas
             </h2>
             <p className="text-slate-500 text-[16px] leading-relaxed font-medium">
-              Join a team of driven individuals aiming to change the way the world handles digital payments. We are looking for top talent across all departments.
+              Junta-te a uma equipa criativa que ajuda marcas a comunicar melhor nas redes sociais. Procuramos talento em criação de conteúdo, gestão de redes, community management e estratégia.
             </p>
           </div>
 
@@ -279,7 +286,7 @@ export default function CareersPage() {
 
                   <div className="flex items-center justify-between md:justify-end md:gap-6 mt-4 md:mt-0">
                     <span className="text-blue-600 font-heading font-bold text-[14px] opacity-0 group-hover:opacity-100 transition-opacity">
-                      Apply Now
+                      Candidatar-me
                     </span>
                     <div className="w-12 h-12 rounded-full border border-slate-100 flex items-center justify-center group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white text-slate-400 transition-colors">
                       <ArrowRight className="size-5" />
@@ -289,7 +296,7 @@ export default function CareersPage() {
               ))
             ) : (
               <div className="text-center py-10 text-slate-500 font-medium">
-                No positions found matching your search.
+                Não encontrámos vagas correspondentes à tua pesquisa.
               </div>
             )}
           </div>
@@ -305,7 +312,7 @@ export default function CareersPage() {
                 Sê informado quando abrirem novas vagas
               </h3>
               <p className="text-slate-300 text-[14px] lg:text-[15px] leading-relaxed">
-                Não encontraste a vaga ideal para ti? Deixa o teu email e nós avisamos-te assim que surgirem novas oportunidades de carreira na INNER Studios.
+                Não encontraste a vaga ideal para ti? Deixa o teu email e nós avisamos-te assim que surgirem novas oportunidades de carreira na stratacoms.
               </p>
             </div>
 
@@ -366,7 +373,7 @@ export default function CareersPage() {
                         <Link href="/cookie-policy" target="_blank" className="underline hover:text-white transition-colors">
                           política de cookies
                         </Link>{" "}
-                        da INNER Studios.
+                        da stratacoms.
                       </span>
                     }
                   />

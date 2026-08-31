@@ -11,11 +11,11 @@ export default function BlogPage() {
   // Navbar handles mobile state
 
   const categories = [
-    { name: "Recent", count: 4 },
-    { name: "Business", count: 8 },
-    { name: "Industry insights", count: 6 },
-    { name: "Regulations", count: 5 },
-    { name: "Fraud", count: 11 }
+    { name: "Recentes", count: 4 },
+    { name: "Redes Sociais", count: 8 },
+    { name: "Criação de Conteúdo", count: 6 },
+    { name: "Estratégia", count: 5 },
+    { name: "Tendências", count: 11 }
   ];
 
   return (
@@ -51,7 +51,7 @@ export default function BlogPage() {
         <div className="flex flex-col md:flex-row md:items-center justify-between py-6 border-b border-slate-100 mb-12 gap-4">
           <div className="flex flex-col md:flex-row md:items-center gap-6">
             <span className="text-[11px] font-bold text-slate-400 tracking-widest uppercase">
-              Categories
+              Categorias
             </span>
             <div className="flex flex-wrap items-center gap-3">
               {categories.map((cat) => (
@@ -81,7 +81,7 @@ export default function BlogPage() {
             {/* We'll use the feature_preview image as a placeholder for the phone composition */}
             <Image 
               src="/images/feature_preview.png" 
-              alt="How the UK pays" 
+              alt="Tendências de redes sociais em 2025"
               fill 
               className="object-cover z-10 group-hover:scale-105 transition-transform duration-700 ease-out" 
             />
@@ -93,21 +93,21 @@ export default function BlogPage() {
           <div className="w-full lg:w-[40%] flex flex-col items-start text-left lg:py-8">
             <div className="flex items-center gap-2 mb-6">
               <span className="px-2.5 py-1 rounded-md bg-blue-50 text-blue-500 text-[10px] font-extrabold tracking-widest uppercase">
-                Recent
+                Recentes
               </span>
               <span className="px-2.5 py-1 rounded-md bg-purple-50 text-purple-500 text-[10px] font-extrabold tracking-widest uppercase">
-                Business
+                Redes Sociais
               </span>
             </div>
             
             <h2 className="font-heading font-bold text-[32px] lg:text-[40px] text-[#0f172a] leading-[1.15] tracking-tight mb-8 group-hover:text-blue-600 transition-colors duration-300">
-              How the UK pays: <br />
-              A merchant's guide to the evolving payment landscape
+              Tendências de redes sociais: <br />
+              o guia da marca para se destacar em 2025
             </h2>
             
             {/* Push meta info to bottom or leave it after margin */}
             <div className="flex items-center gap-3 text-slate-400 text-[13px] font-medium mt-auto lg:mt-24">
-              <span>5 min read</span>
+              <span>5 min de leitura</span>
               <span>•</span>
               <span>10 Jun, 25'</span>
             </div>

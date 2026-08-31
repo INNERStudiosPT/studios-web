@@ -8,7 +8,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://localhost:3001',
     trace: 'on-first-retry',
   },
   projects: [
@@ -18,8 +18,11 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:3000',
+    // Use port 3001 (this app's dev port) instead of the default 3000, which
+    // may be occupied by an unrelated dev server. Locally the running dev
+    // server is reused; in CI a fresh one is started.
+    command: 'next dev -p 3001',
+    url: 'http://localhost:3001',
     reuseExistingServer: !process.env.CI,
   },
 });
