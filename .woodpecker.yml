@@ -1,3 +1,10 @@
+# Run once per change: pull requests, and pushes to main (merges/deploys). Without this, every
+# commit on a PR branch ran twice (push + pull_request) on the single shared CI agent.
+when:
+  - event: pull_request
+  - event: push
+    branch: main
+
 steps:
   - name: lint
     image: node:20
