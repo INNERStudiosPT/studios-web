@@ -13,6 +13,8 @@ import {
   type TransportItem,
 } from "@grafana/faro-web-sdk";
 
+import { stripQueries } from "./lib/faroScrub";
+
 const DEFAULT_FARO_URL = "https://faro.innerstudios.pt/collect";
 
 // Noise that is not ours to fix: browser extensions and the benign
@@ -24,29 +26,9 @@ const IGNORE_ERRORS: Array<string | RegExp> = [
   /safari-(web-)?extension:\/\//i,
   // Faro matches against "message name stack", so anchor on the start only.
   /^Script error\.?\s/i,
-  /Non-Error promise rejection captured/i,
 ];
 
-// Keep only origin + path: query strings and fragments can carry e-mail
-// addresses, tokens or campaign identifiers, and they show up in the page
-// meta, in stack frame file names and in navigation/resource event data.
-const URL_WITH_QUERY = /(https?:\/\/[^\s?#"'()<>]+)[?#][^\s"'()<>]*/g;
-
-function stripQueries<T>(value: T): T {
-  if (typeof value === "string") {
-    return value.replace(URL_WITH_QUERY, "$1") as T;
-  }
-  if (Array.isArray(value)) {
-    return value.map(stripQueries) as T;
-  }
-  if (value && typeof value === "object") {
-    const out: Record<string, unknown> = {};
-    for (const [k, v] of Object.entries(value)) out[k] = stripQueries(v);
-    return out as T;
-  }
-  return value;
-}
-
+// No query strings or fragments in any URL we send (see lib/faroScrub).
 function scrub(item: TransportItem): TransportItem {
   return { ...item, meta: stripQueries(item.meta), payload: stripQueries(item.payload) };
 }
